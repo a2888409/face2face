@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/logic/logic.iml" filepath="$PROJECT_DIR$/logic/logic.iml" />
       <module fileurl="file://$PROJECT_DIR$/protobuf/protobuf.iml" filepath="$PROJECT_DIR$/protobuf/protobuf.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serv2serv/serv2serv.iml" filepath="$PROJECT_DIR$/serv2serv/serv2serv.iml" />
       <module fileurl="file://$PROJECT_DIR$/thrift/thrift.iml" filepath="$PROJECT_DIR$/thrift/thrift.iml" />
     </modules>
   </component>

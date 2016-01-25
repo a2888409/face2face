@@ -29,6 +29,7 @@
         <module name="logic" />
         <module name="protobuf" />
         <module name="redis" />
+        <module name="serv2serv" />
         <module name="thrift" />
       </profile>
     </annotationProcessing>
