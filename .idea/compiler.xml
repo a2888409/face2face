@@ -24,7 +24,6 @@
         <processorPath useClasspath="true" />
         <module name="auth" />
         <module name="database" />
-        <module name="face2face" />
         <module name="gate" />
         <module name="logic" />
         <module name="protobuf" />
