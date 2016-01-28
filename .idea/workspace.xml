@@ -2,30 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0f48127-d95b-4bd0-987c-ee7b25b1fac6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gate/src/main/java/Gate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_12.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gate/src/main/java/GateServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gate/src/main/java/GateStarter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_1_0_SNAPSHOT.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_7.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/qianzhenyu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gate/src/main/java/Gate.java" afterPath="$PROJECT_DIR$/gate/src/main/java/Gate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth/auth.iml" afterPath="$PROJECT_DIR$/auth/auth.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/database.iml" afterPath="$PROJECT_DIR$/database/database.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/face2face.iml" afterPath="$PROJECT_DIR$/face2face.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gate/gate.iml" afterPath="$PROJECT_DIR$/gate/gate.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logic/logic.iml" afterPath="$PROJECT_DIR$/logic/logic.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth/pom.xml" afterPath="$PROJECT_DIR$/auth/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/pom.xml" afterPath="$PROJECT_DIR$/database/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gate/pom.xml" afterPath="$PROJECT_DIR$/gate/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logic/pom.xml" afterPath="$PROJECT_DIR$/logic/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/pom.xml" afterPath="$PROJECT_DIR$/protobuf/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/redis/pom.xml" afterPath="$PROJECT_DIR$/redis/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serv2serv/pom.xml" afterPath="$PROJECT_DIR$/serv2serv/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thrift/pom.xml" afterPath="$PROJECT_DIR$/thrift/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/protobuf.iml" afterPath="$PROJECT_DIR$/protobuf/protobuf.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/redis/redis.iml" afterPath="$PROJECT_DIR$/redis/redis.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serv2serv/serv2serv.iml" afterPath="$PROJECT_DIR$/serv2serv/serv2serv.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thrift/thrift.iml" afterPath="$PROJECT_DIR$/thrift/thrift.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="face2face.iws" />
@@ -63,12 +56,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gate.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gate/src/main/java/Gate.java">
+      <file leaf-file-name="GateStarter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/GateStarter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.084821425" vertical-offset="0" max-vertical-offset="896">
-              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding>
+                <element signature="e#112#113#0" expanded="true" />
+                <element signature="e#160#161#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GateServer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/GateServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4486607" vertical-offset="187" max-vertical-offset="1368">
+              <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#2245#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1230#1689#0" expanded="true" />
+                <element signature="e#1688#1689#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,6 +102,9 @@
         <option value="$PROJECT_DIR$/thrift/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/gate/src/main/java/Gate.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/GateStater.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/GateStarter.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/GateServer.java" />
       </list>
     </option>
   </component>
@@ -110,16 +124,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="gate" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
       </PATH>
     </treeState>
@@ -189,7 +193,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -294,6 +297,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -306,10 +310,10 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="options.lastSelected" value="reference.settings.project.maven.importing" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -595,6 +599,9 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a0f48127-d95b-4bd0-987c-ee7b25b1fac6" name="Default" comment="" />
@@ -606,12 +613,13 @@
       <workItem from="1453776203762" duration="26000" />
       <workItem from="1453779026659" duration="6000" />
       <workItem from="1453892883946" duration="4853000" />
-      <workItem from="1453946880280" duration="1818000" />
+      <workItem from="1453946880280" duration="3065000" />
+      <workItem from="1453950024429" duration="3979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11261000" />
+    <option name="totallyTimeSpent" value="16487000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -625,9 +633,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17590618" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17750533" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17537314" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -637,11 +644,12 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -694,11 +702,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/Gate.java">
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/GateStarter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="285">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="304">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#112#113#0" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -894,14 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23325893" vertical-offset="0" max-vertical-offset="896">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://MAVEN/logic:logic:1.0-SNAPSHOT">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -915,15 +918,64 @@
           <settings layout="Hierarchic Group" zoom="1.0" x="30.0" y="15.0" />
           <SelectedNodes />
           <Categories />
+          <SCOPE>All</SCOPE>
           <VISIBILITY>All</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha2/netty-all-5.0.0.Alpha2.jar!/io/netty/bootstrap/AbstractBootstrap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="2431" max-vertical-offset="5928">
+          <caret line="166" column="25" selection-start-line="166" selection-start-column="25" selection-end-line="166" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6785714" vertical-offset="0" max-vertical-offset="1045">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/5.0.0.Alpha2/netty-all-5.0.0.Alpha2.jar!/io/netty/channel/ChannelOption.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="113" max-vertical-offset="1178">
+          <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gate/src/main/java/Gate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.084821425" vertical-offset="0" max-vertical-offset="896">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.063616075" vertical-offset="0" max-vertical-offset="896">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/GateStarter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#112#113#0" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/GateServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4486607" vertical-offset="187" max-vertical-offset="1368">
+          <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#2245#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1230#1689#0" expanded="true" />
+            <element signature="e#1688#1689#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -991,7 +1043,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: ch.qos.logback:logback-classic:1.1.3</last-edited>
+          <last-edited>Maven: org.slf4j:slf4j-api:1.7.12</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1005,6 +1057,7 @@
   </component>
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />
+    <option value="clean" />
     <option value="clean install" />
     <option value="clean compile" />
   </component>
