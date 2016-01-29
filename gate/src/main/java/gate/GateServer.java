@@ -1,4 +1,4 @@
-
+package gate;
 /**
  * Created by Qzy on 2016/1/28.
  */
@@ -15,7 +15,7 @@ import java.net.InetSocketAddress;
 
 
 public class GateServer {
-    private static final Logger logger = LoggerFactory.getLogger(GateStarter.class);
+    private static final Logger logger = LoggerFactory.getLogger(GateServer.class);
 
     public static void startGateServer(int port) {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
@@ -41,9 +41,9 @@ public class GateServer {
                 public void operationComplete(ChannelFuture future)
                         throws Exception {
                     if (future.isSuccess()) {
-                        logger.info("GateServer Started Successed, waiting for client connect");
+                        logger.info("gate.GateServer Started Successed, waiting for client connect");
                     } else {
-                        logger.error("GateServer Started Failed");
+                        logger.error("gate.GateServer Started Failed");
                     }
                 }
             });
