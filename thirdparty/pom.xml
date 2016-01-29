@@ -7,19 +7,10 @@
         <artifactId>face2face</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>gate</groupId>
-    <artifactId>gate</artifactId>
+    <groupId>thirdparty</groupId>
+    <artifactId>thirdparty</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <dependencies>
-        <dependency>
-            <groupId>thirdparty</groupId>
-            <artifactId>thirdparty</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>
