@@ -1,0 +1,9 @@
+option java_package = "cli_generate";
+option java_outer_classname = "Login";
+
+message login {
+	required int64 user_id = 1;            // 用户id
+	required string token = 2;             // 用户token
+	optional string platform = 3;          // 客户端平台:android,ios,web
+	optional string app_version = 4;       // APP版本号
+}
