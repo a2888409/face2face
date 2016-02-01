@@ -12,8 +12,8 @@ import protobuf.analysis.ParseMap;
 /**
  * Created by Administrator on 2016/1/29.
  */
-public class ProtobufEncoder extends MessageToByteEncoder<Message> {
-    private static final Logger logger = LoggerFactory.getLogger(ProtobufEncoder.class);
+public class PacketEncoder extends MessageToByteEncoder<Message> {
+    private static final Logger logger = LoggerFactory.getLogger(PacketEncoder.class);
 
     @Override
     protected void encode(ChannelHandlerContext ctx, Message msg, ByteBuf out)
@@ -29,12 +29,12 @@ public class ProtobufEncoder extends MessageToByteEncoder<Message> {
         int length = encryptByte.length;*/
 
         ByteBuf buf = Unpooled.buffer(8 + length);
-        buf.writeInt(length);//
+        buf.writeInt(length);
         buf.writeInt(ptoNum);
         buf.writeBytes(bytes);
         out.writeBytes(buf);
 
-        logger.info("GateServer Send Message, remoteAddress: {}, length {}, ptoNum: {}", ctx.channel().remoteAddress(), length, ptoNum);
+        logger.info("GateServer Send Message, remoteAddress: {}, content length {}, ptoNum: {}", ctx.channel().remoteAddress(), length, ptoNum);
 
     }
 }

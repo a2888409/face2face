@@ -14,8 +14,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/1/29.
  */
-public class ProtobufDecoder extends ByteToMessageDecoder {
-    private static final Logger logger = LoggerFactory.getLogger(ProtobufDecoder.class);
+public class PacketDecoder extends ByteToMessageDecoder {
+    private static final Logger logger = LoggerFactory.getLogger(PacketDecoder.class);
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in,
@@ -38,7 +38,7 @@ public class ProtobufDecoder extends ByteToMessageDecoder {
 
             Message msg = ParseMap.getMessage(ptoNum, body);
             out.add(msg);
-            logger.info("GateServer Received Message: length {}, ptoNum: {}", length, ptoNum);
+            logger.info("GateServer Received Message: content length {}, ptoNum: {}", length, ptoNum);
 
         } catch (Exception e) {
             logger.error(ctx.channel().remoteAddress() + ",decode failed.", e);
