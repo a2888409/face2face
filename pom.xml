@@ -15,7 +15,6 @@
         <module>logic</module>
         <module>protobuf</module>
         <module>redis</module>
-        <module>serv2serv</module>
         <module>thrift</module>
         <module>thirdparty</module>
     </modules>

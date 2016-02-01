@@ -1,11 +1,13 @@
 package protobuf.code;
 
+import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import protobuf.analysis.ParseMap;
 
 import java.util.List;
 
@@ -27,25 +29,17 @@ public class ProtobufDecoder extends ByteToMessageDecoder {
         in.readBytes(byteBuf);
 
         try {
-            byte[] inByte = byteBuf.array();
+            /* 解密消息体
+            ThreeDES des = ctx.channel().attr(ClientAttr.ENCRYPT).get();
+            byte[] bareByte = des.decrypt(inByte);*/
 
-            // 解密消息体
-            //ThreeDES des = ctx.channel().attr(ClientAttr.ENCRYPT).get();
-            //byte[] bareByte = des.decrypt(inByte);
+            int ptoNum = in.readInt();
+            byte[] body= byteBuf.array();
 
-            /*-----------------------------------------------------------------------
-            Message msg = Message.parseFrom(bareByte);
-            logger.info("[APP-SERVER][RECV][remoteAddress:"
-                    + ctx.channel().remoteAddress() + "][total length:"
-                    + length + "][bare length:" + msg.getSerializedSize()
-                    + "]:\r\n" + msg.toString());
+            Message msg = ParseMap.getMessage(ptoNum, body);
+            out.add(msg);
+            logger.info("GateServer Received Message: length {}, ptoNum: {}", length, ptoNum);
 
-            if (msg != null) {
-                // 获取业务消息头
-                out.add(msg);
-
-            }
-            -----------------------------------------------------------------------*/
         } catch (Exception e) {
             logger.error(ctx.channel().remoteAddress() + ",decode failed.", e);
         }
@@ -59,7 +53,7 @@ public class ProtobufDecoder extends ByteToMessageDecoder {
             return 0;
         }
 
-        int length = in.readUnsignedShort();
+        int length = in.readInt();
 
         if (length < 0) {
             ctx.close();

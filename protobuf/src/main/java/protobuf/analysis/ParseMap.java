@@ -19,6 +19,7 @@ public class ParseMap {
     private static final Logger logger = LoggerFactory.getLogger(ParseMap.class);
 
     public static HashMap<Integer, ParseMap.Parsing> parseMap = new HashMap<Integer, Parsing>();
+    public static HashMap<Message, Integer> msg2ptoNum = new HashMap<Message, Integer>();
 
     public static void register(int ptoNum, ParseMap.Parsing cla) {
         if (parseMap.get(ptoNum) == null)
@@ -29,13 +30,16 @@ public class ParseMap {
         }
     }
 
-    public static Message parse(int ptoNum, byte[] bytes) throws IOException {
+    public static Message getMessage(int ptoNum, byte[] bytes) throws IOException {
         Parsing parser = parseMap.get(ptoNum);
         if(parser == null) {
             logger.error("UnKnown Protocol Num: {}", ptoNum);
         }
+        Message msg = parser.process(bytes);
 
-        return parser.process(bytes);
+        if(msg2ptoNum.get(msg) != null) {
+            msg2ptoNum.put(msg, ptoNum);
+        }
+        return msg;
     }
-
 }
