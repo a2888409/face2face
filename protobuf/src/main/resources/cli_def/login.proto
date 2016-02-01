@@ -1,7 +1,7 @@
-option java_package = "cli_generate";
-option java_outer_classname = "Login";
+option java_package = "protobuf.GenerateCode.cli2srv.login";
+option java_outer_classname = "Auth";
 
-message login {
+message CLogin {
 	required int64 user_id = 1;            // 用户id
 	required string token = 2;             // 用户token
 	optional string platform = 3;          // 客户端平台:android,ios,web
