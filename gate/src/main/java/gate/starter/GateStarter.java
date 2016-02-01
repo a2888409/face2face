@@ -1,4 +1,5 @@
-package gate;
+package gate.starter;
+import gate.GateServer;
 import org.apache.commons.cli.*;
 
 import java.io.File;
