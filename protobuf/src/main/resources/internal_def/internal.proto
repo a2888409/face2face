@@ -1,0 +1,15 @@
+option java_package = "protobuf.GenerateCode.internal";
+option java_outer_classname = "Internal";
+
+enum Dest {
+    Client = 1;
+    Auth = 2;
+    Logic = 3;
+}
+
+message GTranfer {
+    required Dest   dest  = 1;
+    required uint32 userId = 2;
+    required uint32 ptoNum = 3;
+	required bytes  msg = 4;
+}

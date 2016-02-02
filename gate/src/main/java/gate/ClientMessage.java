@@ -7,10 +7,8 @@ import org.slf4j.LoggerFactory;
 import protobuf.GenerateCode.cli2srv.login.Auth;
 
 import java.io.IOException;
-import java.nio.channels.Channel;
 import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.IntSummaryStatistics;
+
 
 /**
  * Created by Dell on 2016/2/2.
@@ -30,7 +28,7 @@ public class ClientMessage {
         if (tranferHandlerMap.get(ptoNum) == null)
             tranferHandlerMap.put(ptoNum, tranfer);
         else {
-            logger.error("pto has been registered, ptoNum: {}", ptoNum);
+            logger.error("pto has been registered in transeerHandlerMap, ptoNum: {}", ptoNum);
             return;
         }
 
@@ -42,9 +40,13 @@ public class ClientMessage {
         }
     }
 
-    public static MsgTranferHandler getTransferHandler(int ptoNum, Message msg) {
+    public static void processTransferHandler(Message msg, ClientConnection conn) throws IOException {
+        int ptoNum = msg2ptoNum.get(msg.getClass());
+        Transfer transferHandler = tranferHandlerMap.get(ptoNum);
+        if(transferHandler != null) {
+            transferHandler.process(msg, conn);
+        }
 
-        return null;
     }
 
     public static void initTransferHandler() {
