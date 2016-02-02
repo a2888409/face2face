@@ -32,11 +32,11 @@ public class GateAuthConnection {
                             pipeline.addLast("MessageDecoder", new PacketDecoder());
                             pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("handler", new GateAuthConnectionHandler());  //Auth -> gate
+                            pipeline.addLast("GateAuthConnectionHandler", new GateAuthConnectionHandler());  //Auth -> gate
                         }
                     });
 
-            bootstrap.connect(ip, port).addListener(new ChannelFutureListener(){
+            bootstrap.connect(ip, port).addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future)
                         throws Exception {

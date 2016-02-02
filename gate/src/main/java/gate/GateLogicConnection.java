@@ -32,7 +32,7 @@ public class GateLogicConnection {
                             pipeline.addLast("MessageDecoder", new PacketDecoder());
                             pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("handler", new GateLogicConnectionHandler());  //logic -> gate
+                            pipeline.addLast("GateLogicConnectionHandler", new GateLogicConnectionHandler());  //logic -> gate
                         }
                     });
 

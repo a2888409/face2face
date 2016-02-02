@@ -44,7 +44,7 @@ public class GateStarter {
 
         GateAuthConnection.startGateAuthConnection(authIP, authPort);
 
-        GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
+       GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
     }
 
     static void applyConfigurations(String[] args) throws ParseException {
@@ -78,7 +78,6 @@ public class GateStarter {
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
             authIP = element.getAttribute("ip");
-            element = (Element)nodeList.item(1);
             authPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("GateAuthConnection auth ip: {}  auth port: {}", authIP, authPort);
 
@@ -86,7 +85,6 @@ public class GateStarter {
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
             logicIP = element.getAttribute("ip");
-            element = (Element)nodeList.item(1);
             logicPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("GateLogicConnection logic ip: {}  logic port: {}", logicIP, logicPort);
         } catch (Exception e) {

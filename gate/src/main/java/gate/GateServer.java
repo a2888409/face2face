@@ -2,7 +2,7 @@ package gate;
 /**
  * Created by Qzy on 2016/1/28.
  */
-import gate.handler.ClientMessageHandler;
+import gate.handler.GateServerHandler;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.bootstrap.ServerBootstrap;
@@ -36,7 +36,7 @@ public class GateServer {
                             pipeline.addLast("MessageDecoder", new PacketDecoder());
                             pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("ClientMessageHandler", new ClientMessageHandler());
+                            pipeline.addLast("ClientMessageHandler", new GateServerHandler());
                         }
                     });
 
