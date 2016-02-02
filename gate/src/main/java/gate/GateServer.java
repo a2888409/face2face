@@ -21,6 +21,7 @@ public class GateServer {
     private static final Logger logger = LoggerFactory.getLogger(GateServer.class);
 
     public static void startGateServer(int port) {
+        //TODO 需要再配置工作线程数量
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
@@ -53,7 +54,7 @@ public class GateServer {
                     }
                 }
             });
-        }finally {
+        } finally {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
         }
