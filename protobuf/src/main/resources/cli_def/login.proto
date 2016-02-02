@@ -1,4 +1,4 @@
-option java_package = "protobuf.GenerateCode.cli2srv.login";
+option java_package = "protobuf.generate.cli2srv.login";
 option java_outer_classname = "Auth";
 
 message CLogin {

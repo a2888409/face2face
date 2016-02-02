@@ -33,5 +33,16 @@
         <module name="thrift" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth" target="1.8" />
+      <module name="database" target="1.8" />
+      <module name="face2face" target="1.8" />
+      <module name="gate" target="1.8" />
+      <module name="logic" target="1.8" />
+      <module name="protobuf" target="1.8" />
+      <module name="redis" target="1.8" />
+      <module name="thirdparty" target="1.8" />
+      <module name="thrift" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

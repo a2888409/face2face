@@ -1,7 +1,7 @@
 package protobuf;
 
 import java.io.IOException;
-import protobuf.GenerateCode.cli2srv.login.*;
+import protobuf.generate.cli2srv.login.*;
 import protobuf.analysis.ParseMap;
 
 /**

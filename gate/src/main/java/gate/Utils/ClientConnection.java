@@ -12,7 +12,11 @@ import thridparty.ThreeDES.ThreeDES;
 public class ClientConnection {
     public static AttributeKey<ThreeDES> ENCRYPT = AttributeKey.valueOf("encrypt");
 
-    private long userId;
+    private int userId;
     private ChannelHandlerContext ctx;
+
+    public int getUserid() {
+        return userId;
+    }
 
 }

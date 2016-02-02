@@ -4,7 +4,8 @@ import com.google.protobuf.Message;
 import gate.utils.ClientConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import protobuf.GenerateCode.cli2srv.login.Auth;
+import protobuf.generate.cli2srv.login.Auth;
+import protobuf.generate.internal.Internal;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -43,10 +44,10 @@ public class ClientMessage {
     public static void processTransferHandler(Message msg, ClientConnection conn) throws IOException {
         int ptoNum = msg2ptoNum.get(msg.getClass());
         Transfer transferHandler = tranferHandlerMap.get(ptoNum);
+
         if(transferHandler != null) {
             transferHandler.process(msg, conn);
         }
-
     }
 
     public static void initTransferHandler() {
@@ -58,6 +59,12 @@ public class ClientMessage {
     }
 
     public static void transfer2Auth(Message msg, ClientConnection conn) {
+        Internal.GTranfer.Builder igb = Internal.GTranfer.newBuilder();
+        igb.setDest(Internal.Dest.Auth);
+        igb.setUserId(conn.getUserid());
+        igb.setPtoNum(msg2ptoNum.get(msg.getClass()));
+        igb.setMsg(msg.toByteString());
 
+        //TODO 连接管理做好后发送到auth
     }
 }
