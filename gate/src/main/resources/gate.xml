@@ -4,5 +4,11 @@
 
     <!--waiting for client incoming-->
     <gateserver ip = "0.0.0.0"
-                port = "9090"/>
+                port = "9090" />
+
+    <auth   ip = "127.0.0.1"
+            port = "2888" />
+
+    <logic  ip = "127.0.0.1"
+            port = "3888" />
 </gate>

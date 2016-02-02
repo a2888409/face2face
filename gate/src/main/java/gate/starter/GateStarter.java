@@ -1,4 +1,6 @@
 package gate.starter;
+import gate.GateAuthConnection;
+import gate.GateLogicConnection;
 import gate.GateServer;
 import org.apache.commons.cli.*;
 
@@ -22,15 +24,27 @@ import org.w3c.dom.NodeList;
 
 public class GateStarter {
     private static final Logger logger = LoggerFactory.getLogger(GateStarter.class);
-    static File cfg = null;
-    static File log = null;
-    static int gateId = 0;
-    static int port = 0;
+    private static File cfg = null;
+    private static File log = null;
+
+    private static int gateId = 0;
+    private static int gateListenPort = 0;
+
+    private static String authIP = null;
+    private static int authPort = 0;
+
+    private static String logicIP = null;
+    private static int logicPort = 0;
+
 
     public static void main(String[] args) throws Exception {
         applyConfigurations(args);
 
-        GateServer.startGateServer(port);
+        GateServer.startGateServer(gateListenPort);
+
+        GateAuthConnection.startGateAuthConnection(authIP, authPort);
+
+        GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
     }
 
     static void applyConfigurations(String[] args) throws ParseException {
@@ -57,8 +71,24 @@ public class GateStarter {
             xPathExpression  = xPath.compile("/gate/gateserver");
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
-            port = Integer.parseInt(element.getAttribute("port"));
-            logger.info("gateserver port " + port);
+            gateListenPort = Integer.parseInt(element.getAttribute("port"));
+            logger.info("gateserver gateListenPort " + gateListenPort);
+
+            xPathExpression  = xPath.compile("/gate/auth");
+            nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
+            element = (Element)nodeList.item(0);
+            authIP = element.getAttribute("ip");
+            element = (Element)nodeList.item(1);
+            authPort = Integer.parseInt(element.getAttribute("port"));
+            logger.info("GateAuthConnection auth ip: {}  auth port: {}", authIP, authPort);
+
+            xPathExpression  = xPath.compile("/gate/logic");
+            nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
+            element = (Element)nodeList.item(0);
+            logicIP = element.getAttribute("ip");
+            element = (Element)nodeList.item(1);
+            logicPort = Integer.parseInt(element.getAttribute("port"));
+            logger.info("GateLogicConnection logic ip: {}  logic port: {}", logicIP, logicPort);
         } catch (Exception e) {
             logger.error("init cfg error");
             e.printStackTrace();

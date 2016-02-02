@@ -2,6 +2,7 @@ package gate;
 /**
  * Created by Qzy on 2016/1/28.
  */
+import gate.handler.ClientMessageHandler;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.bootstrap.ServerBootstrap;
@@ -35,7 +36,7 @@ public class GateServer {
                             pipeline.addLast("MessageDecoder", new PacketDecoder());
                             pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("Client MessageHandler", new ClientMessageHandler());
+                            pipeline.addLast("ClientMessageHandler", new ClientMessageHandler());
                         }
                     });
 
@@ -46,9 +47,9 @@ public class GateServer {
                 public void operationComplete(ChannelFuture future)
                         throws Exception {
                     if (future.isSuccess()) {
-                        logger.info("gate.GateServer Started Successed, waiting for client connect");
+                        logger.info("[GateServer] Started Successed, waiting for client connect...");
                     } else {
-                        logger.error("gate.GateServer Started Failed");
+                        logger.error("[GateServer] Started Failed");
                     }
                 }
             });

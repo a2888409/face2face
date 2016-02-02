@@ -27,4 +27,11 @@ public class ClientConnectionMap {
         return null;
     }
 
+
+    public static void addClientConnection(ChannelHandlerContext c) {
+        //TODO 稍后加入断线处理
+        ClientConnection conn = new ClientConnection(c);
+        ClientConnectionMap.allClientMap.put(conn.getNetId(), conn);
+    }
+
 }
