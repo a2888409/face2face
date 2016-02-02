@@ -9,7 +9,8 @@ enum Dest {
 
 message GTranfer {
     required Dest   dest  = 1;
-    required uint32 userId = 2;
-    required uint32 ptoNum = 3;
-	required bytes  msg = 4;
+    required uint64 userId = 2;
+    required uint64 netId = 3;
+    required uint32 ptoNum = 4;
+	required bytes  msg = 5;
 }

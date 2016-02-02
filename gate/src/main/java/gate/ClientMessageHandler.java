@@ -1,6 +1,8 @@
 package gate;
 
 import com.google.protobuf.Message;
+import gate.utils.ClientConnection;
+import gate.utils.ClientConnectionMap;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import protobuf.analysis.ParseMap;
@@ -12,19 +14,20 @@ public class ClientMessageHandler extends SimpleChannelInboundHandler<Message> {
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        //保存客户端连接
+
     }
 
 
     @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
-        //解析出ptoNum再转给相应的服务
-        int ptoNum = ParseMap.msg2ptoNum.get(message.getClass());
-
+        ClientConnection conn = ClientConnectionMap.getClientConnection(channelHandlerContext);
+        ClientMessage.processTransferHandler(message, conn);
+        //TODO 最好加一个通知客户端收到消息的通知
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
+        //保存客户端连接
+        ClientConnection.addClientConnection(ctx);
     }
 }

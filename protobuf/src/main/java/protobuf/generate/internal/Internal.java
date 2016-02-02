@@ -112,33 +112,43 @@ public final class Internal {
      */
     protobuf.generate.internal.Internal.Dest getDest();
 
-    // required uint32 userId = 2;
+    // required uint64 userId = 2;
     /**
-     * <code>required uint32 userId = 2;</code>
+     * <code>required uint64 userId = 2;</code>
      */
     boolean hasUserId();
     /**
-     * <code>required uint32 userId = 2;</code>
+     * <code>required uint64 userId = 2;</code>
      */
-    int getUserId();
+    long getUserId();
 
-    // required uint32 ptoNum = 3;
+    // required uint64 netId = 3;
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required uint64 netId = 3;</code>
+     */
+    boolean hasNetId();
+    /**
+     * <code>required uint64 netId = 3;</code>
+     */
+    long getNetId();
+
+    // required uint32 ptoNum = 4;
+    /**
+     * <code>required uint32 ptoNum = 4;</code>
      */
     boolean hasPtoNum();
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required uint32 ptoNum = 4;</code>
      */
     int getPtoNum();
 
-    // required bytes msg = 4;
+    // required bytes msg = 5;
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     boolean hasMsg();
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     com.google.protobuf.ByteString getMsg();
   }
@@ -206,16 +216,21 @@ public final class Internal {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              userId_ = input.readUInt32();
+              userId_ = input.readUInt64();
               break;
             }
             case 24: {
               bitField0_ |= 0x00000004;
+              netId_ = input.readUInt64();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
               ptoNum_ = input.readUInt32();
               break;
             }
-            case 34: {
-              bitField0_ |= 0x00000008;
+            case 42: {
+              bitField0_ |= 0x00000010;
               msg_ = input.readBytes();
               break;
             }
@@ -275,49 +290,65 @@ public final class Internal {
       return dest_;
     }
 
-    // required uint32 userId = 2;
+    // required uint64 userId = 2;
     public static final int USERID_FIELD_NUMBER = 2;
-    private int userId_;
+    private long userId_;
     /**
-     * <code>required uint32 userId = 2;</code>
+     * <code>required uint64 userId = 2;</code>
      */
     public boolean hasUserId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 userId = 2;</code>
+     * <code>required uint64 userId = 2;</code>
      */
-    public int getUserId() {
+    public long getUserId() {
       return userId_;
     }
 
-    // required uint32 ptoNum = 3;
-    public static final int PTONUM_FIELD_NUMBER = 3;
-    private int ptoNum_;
+    // required uint64 netId = 3;
+    public static final int NETID_FIELD_NUMBER = 3;
+    private long netId_;
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required uint64 netId = 3;</code>
      */
-    public boolean hasPtoNum() {
+    public boolean hasNetId() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required uint64 netId = 3;</code>
+     */
+    public long getNetId() {
+      return netId_;
+    }
+
+    // required uint32 ptoNum = 4;
+    public static final int PTONUM_FIELD_NUMBER = 4;
+    private int ptoNum_;
+    /**
+     * <code>required uint32 ptoNum = 4;</code>
+     */
+    public boolean hasPtoNum() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required uint32 ptoNum = 4;</code>
      */
     public int getPtoNum() {
       return ptoNum_;
     }
 
-    // required bytes msg = 4;
-    public static final int MSG_FIELD_NUMBER = 4;
+    // required bytes msg = 5;
+    public static final int MSG_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString msg_;
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     public boolean hasMsg() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     public com.google.protobuf.ByteString getMsg() {
       return msg_;
@@ -325,7 +356,8 @@ public final class Internal {
 
     private void initFields() {
       dest_ = protobuf.generate.internal.Internal.Dest.Client;
-      userId_ = 0;
+      userId_ = 0L;
+      netId_ = 0L;
       ptoNum_ = 0;
       msg_ = com.google.protobuf.ByteString.EMPTY;
     }
@@ -339,6 +371,10 @@ public final class Internal {
         return false;
       }
       if (!hasUserId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNetId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -361,13 +397,16 @@ public final class Internal {
         output.writeEnum(1, dest_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, userId_);
+        output.writeUInt64(2, userId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, ptoNum_);
+        output.writeUInt64(3, netId_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, msg_);
+        output.writeUInt32(4, ptoNum_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, msg_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -384,15 +423,19 @@ public final class Internal {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, userId_);
+          .computeUInt64Size(2, userId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, ptoNum_);
+          .computeUInt64Size(3, netId_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, msg_);
+          .computeUInt32Size(4, ptoNum_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, msg_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -512,12 +555,14 @@ public final class Internal {
         super.clear();
         dest_ = protobuf.generate.internal.Internal.Dest.Client;
         bitField0_ = (bitField0_ & ~0x00000001);
-        userId_ = 0;
+        userId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        ptoNum_ = 0;
+        netId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        msg_ = com.google.protobuf.ByteString.EMPTY;
+        ptoNum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        msg_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -557,9 +602,13 @@ public final class Internal {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.ptoNum_ = ptoNum_;
+        result.netId_ = netId_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.ptoNum_ = ptoNum_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         result.msg_ = msg_;
         result.bitField0_ = to_bitField0_;
@@ -584,6 +633,9 @@ public final class Internal {
         if (other.hasUserId()) {
           setUserId(other.getUserId());
         }
+        if (other.hasNetId()) {
+          setNetId(other.getNetId());
+        }
         if (other.hasPtoNum()) {
           setPtoNum(other.getPtoNum());
         }
@@ -600,6 +652,10 @@ public final class Internal {
           return false;
         }
         if (!hasUserId()) {
+          
+          return false;
+        }
+        if (!hasNetId()) {
           
           return false;
         }
@@ -669,103 +725,136 @@ public final class Internal {
         return this;
       }
 
-      // required uint32 userId = 2;
-      private int userId_ ;
+      // required uint64 userId = 2;
+      private long userId_ ;
       /**
-       * <code>required uint32 userId = 2;</code>
+       * <code>required uint64 userId = 2;</code>
        */
       public boolean hasUserId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required uint32 userId = 2;</code>
+       * <code>required uint64 userId = 2;</code>
        */
-      public int getUserId() {
+      public long getUserId() {
         return userId_;
       }
       /**
-       * <code>required uint32 userId = 2;</code>
+       * <code>required uint64 userId = 2;</code>
        */
-      public Builder setUserId(int value) {
+      public Builder setUserId(long value) {
         bitField0_ |= 0x00000002;
         userId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 userId = 2;</code>
+       * <code>required uint64 userId = 2;</code>
        */
       public Builder clearUserId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        userId_ = 0;
+        userId_ = 0L;
         onChanged();
         return this;
       }
 
-      // required uint32 ptoNum = 3;
-      private int ptoNum_ ;
+      // required uint64 netId = 3;
+      private long netId_ ;
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required uint64 netId = 3;</code>
        */
-      public boolean hasPtoNum() {
+      public boolean hasNetId() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required uint64 netId = 3;</code>
+       */
+      public long getNetId() {
+        return netId_;
+      }
+      /**
+       * <code>required uint64 netId = 3;</code>
+       */
+      public Builder setNetId(long value) {
+        bitField0_ |= 0x00000004;
+        netId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint64 netId = 3;</code>
+       */
+      public Builder clearNetId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        netId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 ptoNum = 4;
+      private int ptoNum_ ;
+      /**
+       * <code>required uint32 ptoNum = 4;</code>
+       */
+      public boolean hasPtoNum() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required uint32 ptoNum = 4;</code>
        */
       public int getPtoNum() {
         return ptoNum_;
       }
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required uint32 ptoNum = 4;</code>
        */
       public Builder setPtoNum(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         ptoNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required uint32 ptoNum = 4;</code>
        */
       public Builder clearPtoNum() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         ptoNum_ = 0;
         onChanged();
         return this;
       }
 
-      // required bytes msg = 4;
+      // required bytes msg = 5;
       private com.google.protobuf.ByteString msg_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public boolean hasMsg() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public com.google.protobuf.ByteString getMsg() {
         return msg_;
       }
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public Builder setMsg(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         msg_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public Builder clearMsg() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         msg_ = getDefaultInstance().getMsg();
         onChanged();
         return this;
@@ -796,11 +885,12 @@ public final class Internal {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\033internal_def/internal.proto\"L\n\010GTranfe" +
-      "r\022\023\n\004dest\030\001 \002(\0162\005.Dest\022\016\n\006userId\030\002 \002(\r\022\016" +
-      "\n\006ptoNum\030\003 \002(\r\022\013\n\003msg\030\004 \002(\014*\'\n\004Dest\022\n\n\006C" +
-      "lient\020\001\022\010\n\004Auth\020\002\022\t\n\005Logic\020\003B&\n\032protobuf" +
-      ".generate.internalB\010Internal"
+      "\n\033internal_def/internal.proto\"[\n\010GTranfe" +
+      "r\022\023\n\004dest\030\001 \002(\0162\005.Dest\022\016\n\006userId\030\002 \002(\004\022\r" +
+      "\n\005netId\030\003 \002(\004\022\016\n\006ptoNum\030\004 \002(\r\022\013\n\003msg\030\005 \002" +
+      "(\014*\'\n\004Dest\022\n\n\006Client\020\001\022\010\n\004Auth\020\002\022\t\n\005Logi" +
+      "c\020\003B&\n\032protobuf.generate.internalB\010Inter" +
+      "nal"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -812,7 +902,7 @@ public final class Internal {
           internal_static_GTranfer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_GTranfer_descriptor,
-              new java.lang.String[] { "Dest", "UserId", "PtoNum", "Msg", });
+              new java.lang.String[] { "Dest", "UserId", "NetId", "PtoNum", "Msg", });
           return null;
         }
       };

@@ -1,8 +1,16 @@
 package gate.utils;
 
+import gate.GateServer;
+import gate.starter.GateStarter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.AttributeKey;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import protobuf.generate.internal.Internal;
 import thridparty.ThreeDES.ThreeDES;
+
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Qzy on 2016/1/29.
@@ -10,13 +18,37 @@ import thridparty.ThreeDES.ThreeDES;
  */
 
 public class ClientConnection {
-    public static AttributeKey<ThreeDES> ENCRYPT = AttributeKey.valueOf("encrypt");
+    private final AtomicLong netidGenerator = new AtomicLong(0);
+    ClientConnection(ChannelHandlerContext c) {
+        netId = netidGenerator.incrementAndGet();
+        ctx = c;
+    }
 
-    private int userId;
+    private static final Logger logger = LoggerFactory.getLogger(ClientConnection.class);
+
+    public static AttributeKey<ThreeDES> ENCRYPT = AttributeKey.valueOf("encrypt");
+    public static AttributeKey<Long> NETID = AttributeKey.valueOf("netid");
+
+    private long userId;
+    private long netId;
     private ChannelHandlerContext ctx;
 
-    public int getUserid() {
+    public long getNetId() {
+        return netId;
+    }
+
+    public long getUserId() {
         return userId;
+    }
+
+    public void readUserIdFromDB() {
+
+    }
+
+    public static void addClientConnection(ChannelHandlerContext c) {
+        //TODO 稍后加入断线处理
+        ClientConnection conn = new ClientConnection(c);
+        ClientConnectionMap.allClientMap.put(conn.netId, conn);
     }
 
 }

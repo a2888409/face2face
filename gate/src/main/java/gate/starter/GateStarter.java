@@ -103,4 +103,8 @@ public class GateStarter {
         System.exit(0);
     }
 
+    public static int getGateId(){
+        return gateId;
+    }
+
 }

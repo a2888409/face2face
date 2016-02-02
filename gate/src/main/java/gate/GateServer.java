@@ -34,6 +34,8 @@ public class GateServer {
                             ChannelPipeline pipeline = channel.pipeline();
                             pipeline.addLast("MessageDecoder", new PacketDecoder());
                             pipeline.addLast("MessageEncoder", new PacketEncoder());
+
+                            pipeline.addLast("Client MessageHandler", new ClientMessageHandler());
                         }
                     });
 

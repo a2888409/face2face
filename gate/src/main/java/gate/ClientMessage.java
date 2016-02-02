@@ -55,13 +55,19 @@ public class ClientMessage {
     }
 
     public static void transfer2Logic(Message msg, ClientConnection conn) {
+        Internal.GTranfer.Builder igb = Internal.GTranfer.newBuilder();
+        igb.setDest(Internal.Dest.Logic);
+        igb.setUserId(conn.getUserId());
+        igb.setPtoNum(msg2ptoNum.get(msg.getClass()));
+        igb.setMsg(msg.toByteString());
 
+        //TODO 连接管理做好后发送到logic
     }
 
     public static void transfer2Auth(Message msg, ClientConnection conn) {
         Internal.GTranfer.Builder igb = Internal.GTranfer.newBuilder();
         igb.setDest(Internal.Dest.Auth);
-        igb.setUserId(conn.getUserid());
+        igb.setUserId(conn.getUserId());
         igb.setPtoNum(msg2ptoNum.get(msg.getClass()));
         igb.setMsg(msg.toByteString());
 
