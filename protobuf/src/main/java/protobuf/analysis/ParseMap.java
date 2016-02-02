@@ -11,21 +11,28 @@ import java.util.HashMap;
  * Created by Qzy on 2016/1/29.
  */
 public class ParseMap {
+    private static final Logger logger = LoggerFactory.getLogger(ParseMap.class);
+
     @FunctionalInterface
     public interface Parsing{
         Message  process(byte[] bytes) throws IOException;
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(ParseMap.class);
+    public static HashMap<Integer, ParseMap.Parsing> parseMap = new HashMap<>();
+    public static HashMap<Class<?>, Integer> msg2ptoNum = new HashMap<>();
 
-    public static HashMap<Integer, ParseMap.Parsing> parseMap = new HashMap<Integer, Parsing>();
-    public static HashMap<Message, Integer> msg2ptoNum = new HashMap<Message, Integer>();
-
-    public static void register(int ptoNum, ParseMap.Parsing cla) {
+    public static void register(int ptoNum, ParseMap.Parsing parse, Class<?> cla) {
         if (parseMap.get(ptoNum) == null)
-            parseMap.put(ptoNum, cla);
+            parseMap.put(ptoNum, parse);
         else {
-            logger.error("pto has been registered, ptoNum: {}", ptoNum);
+            logger.error("pto has been registered in parseMap, ptoNum: {}", ptoNum);
+            return;
+        }
+
+        if(msg2ptoNum.get(cla) == null)
+            msg2ptoNum.put(cla, ptoNum);
+        else {
+            logger.error("pto has been registered in msg2ptoNum, ptoNum: {}", ptoNum);
             return;
         }
     }
@@ -37,9 +44,6 @@ public class ParseMap {
         }
         Message msg = parser.process(bytes);
 
-        if(msg2ptoNum.get(msg) != null) {
-            msg2ptoNum.put(msg, ptoNum);
-        }
         return msg;
     }
 }

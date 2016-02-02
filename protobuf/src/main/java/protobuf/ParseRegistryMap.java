@@ -9,6 +9,6 @@ import protobuf.analysis.ParseMap;
  */
 public class ParseRegistryMap {
     public static void initRegistry() throws IOException {
-        ParseMap.register(1000, Auth.CLogin::parseFrom);
+        ParseMap.register(1000, Auth.CLogin::parseFrom, Auth.CLogin.class);
     }
 }
