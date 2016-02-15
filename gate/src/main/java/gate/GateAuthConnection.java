@@ -36,7 +36,7 @@ public class GateAuthConnection {
                         }
                     });
 
-            bootstrap.connect(ip, port).addListener(new ChannelFutureListener() {
+            ChannelFuture future = bootstrap.connect(ip, port).addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future)
                         throws Exception {
@@ -48,6 +48,10 @@ public class GateAuthConnection {
                 }
             });
 
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            logger.error("GateAuthConnection Close Exception");
         } finally {
             group.shutdownGracefully();
         }
