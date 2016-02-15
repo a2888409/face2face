@@ -12,11 +12,6 @@ import java.nio.ByteBuffer;
 public class ClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-
-    }
-
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         Auth.CLogin.Builder loginInfo = Auth.CLogin.newBuilder();
         loginInfo.setUserId(1);
         loginInfo.setToken("123");
@@ -32,6 +27,11 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         buf.writeBytes(bytes);
 
         ctx.writeAndFlush(buf);
+    }
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+
     }
 
     @Override
