@@ -43,7 +43,7 @@ public class GateServer {
 
             bindConnectionOptions(bootstrap);
 
-            bootstrap.bind(new InetSocketAddress(port)).addListener(new ChannelFutureListener() {
+            ChannelFuture future = bootstrap.bind(new InetSocketAddress(port)).addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future)
                         throws Exception {
@@ -54,6 +54,11 @@ public class GateServer {
                     }
                 }
             });
+
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            logger.error("GateServer Close Exception");
+            e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
