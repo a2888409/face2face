@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="auth" />
+        <module name="client" />
         <module name="database" />
         <module name="gate" />
         <module name="logic" />
@@ -35,6 +36,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth" target="1.8" />
+      <module name="chat-client" target="1.8" />
+      <module name="client" target="1.8" />
       <module name="database" target="1.8" />
       <module name="face2face" target="1.8" />
       <module name="gate" target="1.8" />

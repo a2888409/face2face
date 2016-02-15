@@ -42,9 +42,9 @@ public class GateStarter {
 
         GateServer.startGateServer(gateListenPort);
 
-        GateAuthConnection.startGateAuthConnection(authIP, authPort);
+        //GateAuthConnection.startGateAuthConnection(authIP, authPort);
 
-       GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
+        //GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
     }
 
     static void applyConfigurations(String[] args) throws ParseException {

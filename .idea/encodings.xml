@@ -3,6 +3,9 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chat-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chat-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/database" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gate" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/logic" charset="UTF-8" />
