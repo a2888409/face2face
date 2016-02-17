@@ -1,4 +1,4 @@
-package thridparty.ThreeDES;
+package thridparty.threedes;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;

@@ -11,11 +11,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import protobuf.ParseRegistryMap;
+
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
 
@@ -23,7 +22,6 @@ public class GateServer {
     private static final Logger logger = LoggerFactory.getLogger(GateServer.class);
 
     public static void startGateServer(int port) {
-        //TODO 需要再配置工作线程数量
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
 

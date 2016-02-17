@@ -10,12 +10,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>auth</module>
-        <module>database</module>
         <module>gate</module>
         <module>logic</module>
         <module>protobuf</module>
-        <module>redis</module>
-        <module>thrift</module>
         <module>thirdparty</module>
         <module>client</module>
     </modules>
