@@ -32,6 +32,7 @@ public class ClientConnectionMap {
         //TODO 稍后加入断线处理
         ClientConnection conn = new ClientConnection(c);
         ClientConnectionMap.allClientMap.put(conn.getNetId(), conn);
+        c.attr(ClientConnection.NETID).set(1L);
     }
 
 }

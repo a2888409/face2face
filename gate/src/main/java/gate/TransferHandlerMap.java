@@ -1,0 +1,14 @@
+package gate;
+
+import protobuf.generate.cli2srv.login.Auth;
+
+import java.io.IOException;
+
+/**
+ * Created by Dell on 2016/2/17.
+ */
+public class TransferHandlerMap {
+    public static void initRegistry() throws IOException {
+        ClientMessage.registerTranferHandler(1000, ClientMessage::transfer2Auth, Auth.CLogin.class);
+    }
+}

@@ -2,6 +2,7 @@ package gate.starter;
 import gate.GateAuthConnection;
 import gate.GateLogicConnection;
 import gate.GateServer;
+import gate.TransferHandlerMap;
 import org.apache.commons.cli.*;
 
 import java.io.File;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import protobuf.ParseRegistryMap;
 
 /**
  * Created by Qzy on 2016/1/28.
@@ -39,6 +41,10 @@ public class GateStarter {
 
     public static void main(String[] args) throws Exception {
         applyConfigurations(args);
+
+        ParseRegistryMap.initRegistry();
+
+        TransferHandlerMap.initRegistry();
 
         GateServer.startGateServer(gateListenPort);
 

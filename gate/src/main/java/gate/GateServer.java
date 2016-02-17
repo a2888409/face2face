@@ -11,9 +11,11 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 
@@ -54,7 +56,6 @@ public class GateServer {
                     }
                 }
             });
-
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             logger.error("GateServer Close Exception");

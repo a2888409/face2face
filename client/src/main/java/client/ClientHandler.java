@@ -1,10 +1,10 @@
+package client;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import protobuf.generate.cli2srv.login.Auth;
-
-import java.nio.ByteBuffer;
 
 /**
  * Created by Dell on 2016/2/15.

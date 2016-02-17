@@ -25,6 +25,8 @@ public class PacketDecoder extends ByteToMessageDecoder {
         if (length == -1 || length == 0)
             return;
 
+        int ptoNum = in.readInt();
+
         ByteBuf byteBuf = Unpooled.buffer(length);
         in.readBytes(byteBuf);
 
@@ -33,7 +35,6 @@ public class PacketDecoder extends ByteToMessageDecoder {
             ThreeDES des = ctx.channel().attr(ClientAttr.ENCRYPT).get();
             byte[] bareByte = des.decrypt(inByte);*/
 
-            int ptoNum = in.readInt();
             byte[] body= byteBuf.array();
 
             Message msg = ParseMap.getMessage(ptoNum, body);
@@ -48,8 +49,8 @@ public class PacketDecoder extends ByteToMessageDecoder {
     int checkLength(ChannelHandlerContext ctx, ByteBuf in){
         in.markReaderIndex();
 
-        if (in.readableBytes() < 2) {
-            logger.error("readableBytes length less than 2 bytes");
+        if (in.readableBytes() < 4) {
+            logger.error("readableBytes length less than 4 bytes");
             return 0;
         }
 

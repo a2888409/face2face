@@ -42,16 +42,13 @@ public class ClientMessage {
     }
 
     public static void processTransferHandler(Message msg, ClientConnection conn) throws IOException {
+        logger.info("MessageName {}", msg.getClass());
         int ptoNum = msg2ptoNum.get(msg.getClass());
         Transfer transferHandler = tranferHandlerMap.get(ptoNum);
 
         if(transferHandler != null) {
             transferHandler.process(msg, conn);
         }
-    }
-
-    public static void initTransferHandler() {
-        ClientMessage.registerTranferHandler(1000, ClientMessage::transfer2Auth, Auth.CLogin.class);
     }
 
     public static void transfer2Logic(Message msg, ClientConnection conn) {
