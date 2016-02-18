@@ -46,9 +46,9 @@ public class GateStarter {
 
         TransferHandlerMap.initRegistry();
 
-        GateServer.startGateServer(gateListenPort);
+        //GateServer.startGateServer(gateListenPort);
 
-        //GateAuthConnection.startGateAuthConnection(authIP, authPort);
+        GateAuthConnection.startGateAuthConnection(authIP, authPort);
 
         //GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
     }

@@ -50,7 +50,7 @@ public class PacketDecoder extends ByteToMessageDecoder {
         in.markReaderIndex();
 
         if (in.readableBytes() < 4) {
-            logger.error("readableBytes length less than 4 bytes");
+            logger.info("readableBytes length less than 4 bytes, ignored");
             return 0;
         }
 

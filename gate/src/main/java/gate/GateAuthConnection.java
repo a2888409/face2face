@@ -36,19 +36,10 @@ public class GateAuthConnection {
                         }
                     });
 
-            ChannelFuture future = bootstrap.connect(ip, port).addListener(new ChannelFutureListener() {
-                @Override
-                public void operationComplete(ChannelFuture future)
-                        throws Exception {
-                    if (future.isSuccess()) {
-                        logger.info("GateAuthConnection Start Successed");
-                    } else {
-                        logger.error("GateAuthConnection Start Failed");
-                    }
-                }
-            });
+            ChannelFuture future = bootstrap.connect(ip, port).sync();
 
             future.channel().closeFuture().sync();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
             logger.error("GateAuthConnection Close Exception");

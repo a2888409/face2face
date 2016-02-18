@@ -1,13 +1,13 @@
-package gate;
+package auth;
 /**
  * Created by Qzy on 2016/1/28.
  */
-import gate.handler.GateServerHandler;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import auth.handler.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +18,10 @@ import protobuf.code.PacketEncoder;
 import java.net.InetSocketAddress;
 
 
-public class GateServer {
-    private static final Logger logger = LoggerFactory.getLogger(GateServer.class);
+public class AuthServer {
+    private static final Logger logger = LoggerFactory.getLogger(AuthServer.class);
 
-    public static void startGateServer(int port) {
+    public static void startAuthServer(int port) {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
@@ -37,7 +37,7 @@ public class GateServer {
                             pipeline.addLast("MessageDecoder", new PacketDecoder());
                             pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("ClientMessageHandler", new GateServerHandler());
+                            pipeline.addLast("AuthServerHandler", new AuthServerHandler());
                         }
                     });
 
@@ -48,13 +48,16 @@ public class GateServer {
                 public void operationComplete(ChannelFuture future)
                         throws Exception {
                     if (future.isSuccess()) {
-                        logger.info("[GateServer] Started Successed, waiting for client connect...");
+                        logger.info("[AuthServer] Started Successed, waiting for other server connect...");
                     } else {
-                        logger.error("[GateServer] Started Failed");
+                        logger.error("[AuthServer] Started Failed");
                     }
                 }
             });
-            //future.channel().closeFuture().sync();
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            logger.error("AuthServer Close Exception");
+            e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
