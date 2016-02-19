@@ -19,32 +19,22 @@ public class GateAuthConnection {
 
     public static void startGateAuthConnection(String ip, int port) {
         EventLoopGroup group = new NioEventLoopGroup();
-        try {
-            Bootstrap bootstrap = new Bootstrap()
-                    .group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel channel)
-                                throws Exception {
-                            ChannelPipeline pipeline = channel.pipeline();
 
-                            pipeline.addLast("MessageDecoder", new PacketDecoder());
-                            pipeline.addLast("MessageEncoder", new PacketEncoder());
+        Bootstrap bootstrap = new Bootstrap()
+                .group(group)
+                .channel(NioSocketChannel.class)
+                .handler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel channel)
+                            throws Exception {
+                        ChannelPipeline pipeline = channel.pipeline();
 
-                            pipeline.addLast("GateAuthConnectionHandler", new GateAuthConnectionHandler());  //Auth -> gate
-                        }
-                    });
+                        pipeline.addLast("MessageDecoder", new PacketDecoder());
+                        pipeline.addLast("MessageEncoder", new PacketEncoder());
+                        pipeline.addLast("GateAuthConnectionHandler", new GateAuthConnectionHandler());  //Auth -> gate
+                    }
+                });
 
-            ChannelFuture future = bootstrap.connect(ip, port).sync();
-
-            future.channel().closeFuture().sync();
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            logger.error("GateAuthConnection Close Exception");
-        } finally {
-            group.shutdownGracefully();
-        }
+        ChannelFuture future = bootstrap.connect(ip, port);
     }
 }

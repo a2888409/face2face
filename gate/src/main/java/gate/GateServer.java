@@ -12,6 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
 
@@ -25,40 +26,35 @@ public class GateServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
-        try {
-            ServerBootstrap bootstrap = new ServerBootstrap()
-                    .group(bossGroup, workGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel channel)
-                                throws Exception {
-                            ChannelPipeline pipeline = channel.pipeline();
-                            pipeline.addLast("MessageDecoder", new PacketDecoder());
-                            pipeline.addLast("MessageEncoder", new PacketEncoder());
-
-                            pipeline.addLast("ClientMessageHandler", new GateServerHandler());
-                        }
-                    });
-
-            bindConnectionOptions(bootstrap);
-
-            ChannelFuture future = bootstrap.bind(new InetSocketAddress(port)).addListener(new ChannelFutureListener() {
-                @Override
-                public void operationComplete(ChannelFuture future)
-                        throws Exception {
-                    if (future.isSuccess()) {
-                        logger.info("[GateServer] Started Successed, waiting for client connect...");
-                    } else {
-                        logger.error("[GateServer] Started Failed");
+        ServerBootstrap bootstrap = new ServerBootstrap()
+                .group(bossGroup, workGroup)
+                .channel(NioServerSocketChannel.class)
+                .childHandler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel channel)
+                            throws Exception {
+                        ChannelPipeline pipeline = channel.pipeline();
+                        pipeline.addLast("MessageDecoder", new PacketDecoder());
+                        pipeline.addLast("MessageEncoder", new PacketEncoder());
+                        pipeline.addLast("ClientMessageHandler", new GateServerHandler());
                     }
+                });
+
+        bindConnectionOptions(bootstrap);
+
+        bootstrap.bind(new InetSocketAddress(port)).addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture future)
+                    throws Exception {
+                if (future.isSuccess()) {
+                    ParseRegistryMap.initRegistry();
+                    TransferHandlerMap.initRegistry();
+                    logger.info("[GateServer] Started Successed, registry is complete, waiting for client connect...");
+                } else {
+                    logger.error("[GateServer] Started Failed, registry is incomplete");
                 }
-            });
-            //future.channel().closeFuture().sync();
-        } finally {
-            bossGroup.shutdownGracefully();
-            workGroup.shutdownGracefully();
-        }
+            }
+        });
     }
 
     protected static void bindConnectionOptions(ServerBootstrap bootstrap) {
