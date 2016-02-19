@@ -47,6 +47,7 @@ public class GateServer {
             public void operationComplete(ChannelFuture future)
                     throws Exception {
                 if (future.isSuccess()) {
+                    //init Registry
                     ParseRegistryMap.initRegistry();
                     TransferHandlerMap.initRegistry();
                     logger.info("[GateServer] Started Successed, registry is complete, waiting for client connect...");

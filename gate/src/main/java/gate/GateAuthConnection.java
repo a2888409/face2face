@@ -35,6 +35,6 @@ public class GateAuthConnection {
                     }
                 });
 
-        ChannelFuture future = bootstrap.connect(ip, port);
+        bootstrap.connect(ip, port);
     }
 }

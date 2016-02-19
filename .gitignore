@@ -1,0 +1,6 @@
+﻿*.log
+*.class
+*.jar
+workspace.xml
+encodings.xml
+

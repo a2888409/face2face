@@ -12,6 +12,7 @@ import auth.handler.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
 
@@ -25,43 +26,37 @@ public class AuthServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
-        try {
-            ServerBootstrap bootstrap = new ServerBootstrap()
-                    .group(bossGroup, workGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel channel)
-                                throws Exception {
-                            ChannelPipeline pipeline = channel.pipeline();
-                            pipeline.addLast("MessageDecoder", new PacketDecoder());
-                            pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("AuthServerHandler", new AuthServerHandler());
-                        }
-                    });
+        ServerBootstrap bootstrap = new ServerBootstrap()
+                .group(bossGroup, workGroup)
+                .channel(NioServerSocketChannel.class)
+                .childHandler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel channel)
+                            throws Exception {
+                        ChannelPipeline pipeline = channel.pipeline();
+                        pipeline.addLast("MessageDecoder", new PacketDecoder());
+                        pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-            bindConnectionOptions(bootstrap);
-
-            ChannelFuture future = bootstrap.bind(new InetSocketAddress(port)).addListener(new ChannelFutureListener() {
-                @Override
-                public void operationComplete(ChannelFuture future)
-                        throws Exception {
-                    if (future.isSuccess()) {
-                        logger.info("[AuthServer] Started Successed, waiting for other server connect...");
-                    } else {
-                        logger.error("[AuthServer] Started Failed");
+                        pipeline.addLast("AuthServerHandler", new AuthServerHandler());
                     }
+                });
+
+        bindConnectionOptions(bootstrap);
+
+        bootstrap.bind(new InetSocketAddress(port)).addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture future)
+                    throws Exception {
+                if (future.isSuccess()) {
+                    //init registry
+                    ParseRegistryMap.initRegistry();
+                    logger.info("[AuthServer] Started Successed, waiting for other server connect...");
+                } else {
+                    logger.error("[AuthServer] Started Failed");
                 }
-            });
-            future.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            logger.error("AuthServer Close Exception");
-            e.printStackTrace();
-        } finally {
-            bossGroup.shutdownGracefully();
-            workGroup.shutdownGracefully();
-        }
+            }
+        });
     }
 
     protected static void bindConnectionOptions(ServerBootstrap bootstrap) {

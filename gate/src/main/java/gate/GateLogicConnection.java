@@ -19,36 +19,23 @@ public class GateLogicConnection {
 
     public static void startGateLogicConnection(String ip, int port) {
         EventLoopGroup group = new NioEventLoopGroup();
-        try {
-            Bootstrap bootstrap = new Bootstrap()
-                    .group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel channel)
-                                throws Exception {
-                            ChannelPipeline pipeline = channel.pipeline();
+        Bootstrap bootstrap = new Bootstrap()
+                .group(group)
+                .channel(NioSocketChannel.class)
+                .handler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel channel)
+                            throws Exception {
+                        ChannelPipeline pipeline = channel.pipeline();
 
-                            pipeline.addLast("MessageDecoder", new PacketDecoder());
-                            pipeline.addLast("MessageEncoder", new PacketEncoder());
+                        pipeline.addLast("MessageDecoder", new PacketDecoder());
+                        pipeline.addLast("MessageEncoder", new PacketEncoder());
 
-                            pipeline.addLast("GateLogicConnectionHandler", new GateLogicConnectionHandler());  //logic -> gate
-                        }
-                    });
-
-           bootstrap.connect(ip, port).addListener(new ChannelFutureListener(){
-                @Override
-                public void operationComplete(ChannelFuture future)
-                        throws Exception {
-                    if (future.isSuccess()) {
-                        logger.info("[Gate]-[Logic] Connection is established");
-                    } else {
-                        logger.error(" [Gate]-[Logic] Connection Started Failed");
+                        pipeline.addLast("GateLogicConnectionHandler", new GateLogicConnectionHandler());  //logic -> gate
                     }
-                }
-            });
-        } finally {
-            group.shutdownGracefully();
-        }
+                });
+
+        bootstrap.connect(ip, port);
+
     }
 }

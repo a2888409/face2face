@@ -26,21 +26,16 @@ public class AuthStarter {
     private static File cfg = null;
     private static File log = null;
 
-    private static int authListenPort = 0;
-
     public static void main(String[] args) throws Exception {
-        applyConfigurations(args);
 
-        ParseRegistryMap.initRegistry();
-
-        AuthServer.startAuthServer(authListenPort);
+        configureAndStart(args);
     }
 
-    static void applyConfigurations(String[] args) throws ParseException {
+    static void configureAndStart(String[] args) throws ParseException {
         parseArgs(args);
 
-        //init cfg
         try {
+            //parse xml File and apply it
             DocumentBuilder builder = DocumentBuilderFactory
                     .newInstance().newDocumentBuilder();
             Document doc = builder.parse(cfg);
@@ -55,8 +50,11 @@ public class AuthStarter {
             xPathExpression  = xPath.compile("/auth/authserver");
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
-            authListenPort = Integer.parseInt(element.getAttribute("port"));
+            int authListenPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("Authserver authListenPort " + authListenPort);
+
+            //Now Start Servers
+            new Thread(() -> AuthServer.startAuthServer(authListenPort)).start();
 
         } catch (Exception e) {
             logger.error("init cfg error");
@@ -98,7 +96,7 @@ public class AuthStarter {
     static void printHelpMessage() {
         System.out.println( "Change the xml File and Log.XML Path to the right Absolute Path base on your project Location in your computor");
         System.out.println("Usage example: ");
-        System.out.println( "java -cfg D:\\MyProject\\face2face\\auth\\src\\main\\resources\\auth.xml  -log D:\\MyProject\\face2face\\gate\\src\\main\\resources\\log.xml");
+        System.out.println( "java -cfg D:\\MyProject\\face2face\\auth\\src\\main\\resources\\auth.xml  -log D:\\MyProject\\face2face\\auth\\src\\main\\resources\\log.xml");
         System.exit(0);
     }
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<logic>
+
+    <!--waiting for other server incoming-->
+    <logicserver ip = "0.0.0.0"
+                port = "7070" />
+
+</logic>

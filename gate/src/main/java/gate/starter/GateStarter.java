@@ -1,5 +1,6 @@
 package gate.starter;
 import gate.GateAuthConnection;
+import gate.GateLogicConnection;
 import gate.GateServer;
 import org.apache.commons.cli.*;
 
@@ -25,32 +26,19 @@ public class GateStarter {
     private static final Logger logger = LoggerFactory.getLogger(GateStarter.class);
     private static File cfg = null;
     private static File log = null;
-
-    private static int gateId = 0;
-    private static int gateListenPort = 0;
-
-    private static String authIP = null;
-    private static int authPort = 0;
-
-    private static String logicIP = null;
-    private static int logicPort = 0;
-
+    private static int gateId;
 
     public static void main(String[] args) throws Exception {
-        applyConfigurations(args);
 
-        new Thread(() -> GateServer.startGateServer(gateListenPort)).start();
+        configureAndStart(args);
 
-        new Thread(() -> GateAuthConnection.startGateAuthConnection(authIP, authPort)).start();
-
-        //GateLogicConnection.startGateLogicConnection(logicIP, logicPort);
     }
 
-    static void applyConfigurations(String[] args) throws ParseException {
+    static void configureAndStart(String[] args) throws ParseException {
         parseArgs(args);
 
-        //init cfg
         try {
+            //parse xml File and apply it
             DocumentBuilder builder = DocumentBuilderFactory
                     .newInstance().newDocumentBuilder();
             Document doc = builder.parse(cfg);
@@ -70,27 +58,36 @@ public class GateStarter {
             xPathExpression  = xPath.compile("/gate/gateserver");
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
-            gateListenPort = Integer.parseInt(element.getAttribute("port"));
+            int gateListenPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("gateserver gateListenPort " + gateListenPort);
 
             xPathExpression  = xPath.compile("/gate/auth");
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
-            authIP = element.getAttribute("ip");
-            authPort = Integer.parseInt(element.getAttribute("port"));
+            String authIP = element.getAttribute("ip");
+            int authPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("GateAuthConnection auth ip: {}  auth port: {}", authIP, authPort);
 
             xPathExpression  = xPath.compile("/gate/logic");
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
-            logicIP = element.getAttribute("ip");
-            logicPort = Integer.parseInt(element.getAttribute("port"));
+            String logicIP = element.getAttribute("ip");
+            int logicPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("GateLogicConnection logic ip: {}  logic port: {}", logicIP, logicPort);
+
+            //TODO init log congfigres
+
+            //Now Start Servers
+            new Thread(() -> GateServer.startGateServer(gateListenPort)).start();
+
+            new Thread(() -> GateAuthConnection.startGateAuthConnection(authIP, authPort)).start();
+
+            new Thread(() -> GateLogicConnection.startGateLogicConnection(logicIP, logicPort)).start();
+
         } catch (Exception e) {
             logger.error("init cfg error");
             e.printStackTrace();
         }
-        //init log
     }
 
     static void parseArgs(String[] args) throws ParseException {
@@ -126,12 +123,11 @@ public class GateStarter {
     static void printHelpMessage() {
         System.out.println( "Change the xml File and Log.XML Path to right Absolute Path base on your project Location in your computor");
         System.out.println("Usage example: ");
-        System.out.println( "java -cfg D:\\MyProject\\face2face\\gate\\src\\main\\resources\\gate.xml  -log D:\\MyProject\\face2face\\gate\\src\\main\\resources\\log.xml");
+        System.out.println( "java -cfg D:\\MyProject\\face2face\\auth\\src\\main\\resources\\auth.xml  -log D:\\MyProject\\face2face\\auth\\src\\main\\resources\\log.xml");
         System.exit(0);
     }
 
-    public static int getGateId(){
+    public static int getGateId() {
         return gateId;
     }
-
 }
