@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
  */
 public class UserUtils {
     public static enum userFileds {
+        LastUserId,
         Account;
 
         public final byte[] field;
