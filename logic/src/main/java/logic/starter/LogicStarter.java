@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import thirdparty.redis.utils.RedisPoolManager;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,6 +31,7 @@ public class LogicStarter {
     private static final Logger logger = LoggerFactory.getLogger(LogicStarter.class);
     private static File cfg = null;
     private static File log = null;
+    public static RedisPoolManager _redisPoolManager;
 
     public static void main(String[] args) throws Exception {
 
@@ -58,6 +60,16 @@ public class LogicStarter {
             element = (Element)nodeList.item(0);
             int logicListenPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("Logicserver logicListenPort " + logicListenPort);
+
+            xPathExpression  = xPath.compile("/logic/redis");
+            nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
+            element = (Element)nodeList.item(0);
+            _redisPoolManager = new RedisPoolManager();
+            _redisPoolManager.REDIS_SERVER = element.getAttribute("ip");
+            _redisPoolManager.REDIS_PORT = Integer.parseInt(element.getAttribute("port"));
+
+            _redisPoolManager.returnJedis(_redisPoolManager.getJedis());
+            logger.info("Redis init successed");
 
             //Now Start Servers
             new Thread(() -> LogicServer.startLogicServer(logicListenPort)).start();

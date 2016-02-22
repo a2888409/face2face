@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import protobuf.ParseRegistryMap;
+import thirdparty.redis.utils.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,6 +25,7 @@ public class AuthStarter {
     private static final Logger logger = LoggerFactory.getLogger(AuthStarter.class);
     private static File cfg = null;
     private static File log = null;
+    public static RedisPoolManager _redisPoolManager;
 
     public static void main(String[] args) throws Exception {
 
@@ -51,6 +52,19 @@ public class AuthStarter {
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
             int authListenPort = Integer.parseInt(element.getAttribute("port"));
+            logger.info("Authserver authListenPort " + authListenPort);
+
+            xPathExpression  = xPath.compile("/auth/redis");
+            nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
+            element = (Element)nodeList.item(0);
+            _redisPoolManager = new RedisPoolManager();
+            _redisPoolManager.REDIS_SERVER = element.getAttribute("ip");
+            _redisPoolManager.REDIS_PORT = Integer.parseInt(element.getAttribute("port"));
+
+            _redisPoolManager.returnJedis(_redisPoolManager.getJedis());
+            logger.info("Redis init successed");
+
+
             logger.info("Authserver authListenPort " + authListenPort);
 
             //Now Start Servers
