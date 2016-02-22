@@ -10,6 +10,7 @@ import protobuf.code.PacketEncoder;
 
 /**
  * Created by Dell on 2016/2/15.
+ * Simple client for module test
  */
 public class Client {
     static final String HOST = System.getProperty("host", "127.0.0.1");

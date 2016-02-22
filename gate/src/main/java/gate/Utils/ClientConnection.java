@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 
 public class ClientConnection {
-    private final AtomicLong netidGenerator = new AtomicLong(0);
+    private static final AtomicLong netidGenerator = new AtomicLong(0);
     ClientConnection(ChannelHandlerContext c) {
         netId = netidGenerator.incrementAndGet();
         ctx = c;
