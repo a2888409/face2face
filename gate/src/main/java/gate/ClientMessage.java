@@ -56,13 +56,13 @@ public class ClientMessage {
     }
 
     public static void transfer2Logic(Message msg, ClientConnection conn) {
-        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.get_netId(), Internal.Dest.Logic);
+        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Logic);
 
         GateLogicConnectionHandler.getGatelogicConnection().writeAndFlush(byteBuf);
     }
 
     public static void transfer2Auth(Message msg, ClientConnection conn) {
-        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.get_netId(), Internal.Dest.Auth);
+        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Auth);
 
         GateAuthConnectionHandler.getGateAuthConnection().writeAndFlush(byteBuf);
 
