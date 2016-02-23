@@ -13,8 +13,8 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         Auth.CLogin.Builder loginInfo = Auth.CLogin.newBuilder();
-        loginInfo.setUserId(1);
-        loginInfo.setToken("123");
+        loginInfo.setUserid("qzy");
+        loginInfo.setPasswd("123");
         loginInfo.setPlatform("ios");
         loginInfo.setAppVersion("1.0.0");
 

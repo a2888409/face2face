@@ -2,14 +2,24 @@ option java_package = "protobuf.generate.cli2srv.login";
 option java_outer_classname = "Auth";
 
 message CRegister {
-	required string account = 1;
+	required string userid = 1;
 	required string passwd  = 2;
 }
 
 message CLogin {
-	required int64 user_id = 1;            // 用户id
-	required string passwd = 2;             // 用户token
+	required string userid = 1;            // 用户账户id
+	required string passwd = 2;             // 用户密码
 	optional string platform = 3;          // 客户端平台:android,ios,web
 	optional string app_version = 4;       // APP版本号
+}
+
+/*
+code：
+200 -- ok
+404 -- error
+*/
+message SResponse {
+	required int32 code = 1;		    //返回码
+	required string desc = 2;			//描述
 }
 
