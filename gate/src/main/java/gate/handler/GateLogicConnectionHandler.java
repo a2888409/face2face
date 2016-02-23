@@ -11,9 +11,15 @@ import org.slf4j.LoggerFactory;
  */
 public class GateLogicConnectionHandler extends SimpleChannelInboundHandler<Message> {
     private static final Logger logger = LoggerFactory.getLogger(GateLogicConnectionHandler.class);
+    private static ChannelHandlerContext _gateLogicConnection;
+
+    public static ChannelHandlerContext getGatelogicConnection() {
+        return _gateLogicConnection;
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        _gateLogicConnection = ctx;
         logger.info("[Gate-Logic] connection is established");
     }
     @Override

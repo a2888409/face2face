@@ -16,8 +16,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ClientConnection {
     private static final AtomicLong netidGenerator = new AtomicLong(0);
     ClientConnection(ChannelHandlerContext c) {
-        netId = netidGenerator.incrementAndGet();
-        ctx = c;
+        _netId = netidGenerator.incrementAndGet();
+        _ctx = c;
     }
 
     private static final Logger logger = LoggerFactory.getLogger(ClientConnection.class);
@@ -25,21 +25,24 @@ public class ClientConnection {
     public static AttributeKey<ThreeDES> ENCRYPT = AttributeKey.valueOf("encrypt");
     public static AttributeKey<Long> NETID = AttributeKey.valueOf("netid");
 
-    private long userId;
-    private long netId;
-    private ChannelHandlerContext ctx;
+    private String _userId;
+    private long _netId;
+    private ChannelHandlerContext _ctx;
 
     public long getNetId() {
-        return netId;
+        return _netId;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getUserId() {
+        return _userId;
     }
 
     public void readUserIdFromDB() {
 
     }
 
-
+    public void setCtx(ChannelHandlerContext ctx) {_ctx = ctx;}
+    public ChannelHandlerContext getCtx() {
+        return _ctx;
+    }
 }

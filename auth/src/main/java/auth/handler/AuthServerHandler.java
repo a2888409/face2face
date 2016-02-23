@@ -6,13 +6,16 @@ package auth.handler;
 
 import auth.starter.AuthStarter;
 import com.google.protobuf.Message;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.Utils;
+import protobuf.analysis.ParseMap;
 import protobuf.generate.cli2srv.login.Auth;
+import protobuf.generate.internal.Internal;
 import redis.clients.jedis.Jedis;
 import thirdparty.redis.utils.UserUtils;
 import thirdparty.thrift.generate.db.user.Account;
@@ -34,13 +37,17 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
-        if(message instanceof Auth.CRegister)
-            dealWithRegistry((Auth.CRegister)message);
-        else if(message instanceof Auth.CLogin)
-            dealWithAuthCmd((Auth.CLogin)message);
+        Internal.GTransfer gt = (Internal.GTransfer) message;
+        long netId = gt.getNetId();
+        Message msg = ParseMap.getMessage(gt.getPtoNum(), gt.getMsg().toByteArray());
+
+        if(msg instanceof Auth.CRegister)
+            dealWithRegistry((Auth.CRegister)msg, netId);
+        else if(msg instanceof Auth.CLogin)
+            dealWithAuthCmd((Auth.CLogin)msg, netId);
     }
 
-    void dealWithRegistry(Auth.CRegister msg) throws TException {
+    void dealWithRegistry(Auth.CRegister msg, long netId) throws TException {
         //long userkey = Common.generateUserId();
         String userid = msg.getUserid();
         Account account = new Account();
@@ -52,28 +59,29 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
         jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
     }
 
-    void dealWithAuthCmd(Auth.CLogin msg) throws TException {
+    void dealWithAuthCmd(Auth.CLogin msg, long netId) throws TException {
         Jedis jedis = AuthStarter._redisPoolManager.getJedis();
         String userId = msg.getUserid();
         Account account = null;
         byte[] userIdBytes = jedis.hget(UserUtils.genDBKey(userId), UserUtils.userFileds.Account.field);
         if(userIdBytes == null) {
-            sendResponse(404, "Account is not registered");
+            sendResponse(404, "Account is not registered", netId);
         } else {
             account = DBOperator.Deserialize(new Account(), userIdBytes);
         }
 
         if(account.getUserid().equals(msg.getUserid()) && account.getPasswd().equals(msg.getPasswd()))
-            sendResponse(200, "Verify passed");
+            sendResponse(200, "Verify passed", netId);
         else
-            sendResponse(404, "Account not exist or passwd error");
+            sendResponse(404, "Account not exist or passwd error", netId);
     }
 
-    void sendResponse(int code, String desc) {
+    void sendResponse(int code, String desc, long netId) {
         Auth.SResponse.Builder sb = Auth.SResponse.newBuilder();
         sb.setCode(code);
         sb.setDesc(desc);
 
-        Utils.packAndSend(sb.build(), getGateAuthConnection());
+        ByteBuf byteBuf = Utils.pack2Server(sb.build(), 1002, netId, Internal.Dest.Client);
+        getGateAuthConnection().writeAndFlush(byteBuf);
     }
 }

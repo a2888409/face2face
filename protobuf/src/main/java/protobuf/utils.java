@@ -3,23 +3,42 @@ package protobuf;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
 import protobuf.analysis.ParseMap;
+import protobuf.generate.internal.Internal;
 
 /**
  * Created by Dell on 2016/2/23.
  */
 public class Utils {
-    public static void packAndSend(Message msg, ChannelHandlerContext dest) {
-        byte[] bytes = msg.toByteArray();
+    public static ByteBuf pack2Server(Message msg, int ptoNum, long netId, Internal.Dest dest) {
+        Internal.GTransfer.Builder gtf = Internal.GTransfer.newBuilder();
+        gtf.setPtoNum(ptoNum);
+        gtf.setMsg(msg.toByteString());
+        gtf.setNetId(netId);
+        gtf.setDest(dest);
+
+        byte[] bytes = gtf.build().toByteArray();
         int length =bytes.length;
-        int ptoNum = ParseMap.msg2ptoNum.get(msg);
+        int gtfNum = 900;
 
         ByteBuf buf = Unpooled.buffer(8 + length);
         buf.writeInt(length);
-        buf.writeInt(ptoNum);     //协议号
+        buf.writeInt(gtfNum);     //传输协议的协议号
         buf.writeBytes(bytes);
 
-        dest.writeAndFlush(buf);
+        return buf;
+    }
+
+    public static ByteBuf pack2Client(Message msg) {
+        byte[] bytes = msg.toByteArray();
+        int length =bytes.length;
+        int ptoNum = ParseMap.getPtoNum(msg);
+
+        ByteBuf buf = Unpooled.buffer(8 + length);
+        buf.writeInt(length);
+        buf.writeInt(ptoNum);
+        buf.writeBytes(bytes);
+
+        return buf;
     }
 }

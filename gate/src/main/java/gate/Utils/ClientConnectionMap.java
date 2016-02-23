@@ -27,10 +27,20 @@ public class ClientConnectionMap {
         return null;
     }
 
+    public static ClientConnection getClientConnection(long netId) {
+        ClientConnection conn = allClientMap.get(netId);
+        if(conn != null)
+            return conn;
+        else {
+            logger.error("ClientConenction not found in allClientMap, netId: {}", netId);
+        }
+        return null;
+    }
 
-    public static void addClientConnection(ChannelHandlerContext c) {
+        public static void addClientConnection(ChannelHandlerContext c) {
         //TODO 稍后加入断线处理
         ClientConnection conn = new ClientConnection(c);
+
         ClientConnectionMap.allClientMap.put(conn.getNetId(), conn);
         c.attr(ClientConnection.NETID).set(conn.getNetId());
     }

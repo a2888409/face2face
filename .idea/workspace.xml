@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0f48127-d95b-4bd0-987c-ee7b25b1fac6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java" />
-      <change type="DELETED" beforePath="D:\MyProject\IM\face2face\protobuf\src\main\java\protobuf\generate\internal\Internal.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\MyProject\IM\face2face\protobuf\src\main\resources\internal_def\internal.proto" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/generate/db/user/Account.java" afterPath="$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/generate/db/user/Account.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/protobuf/src/main/resources/internal_def/internal.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/generate/cli2srv/login/Auth.java" afterPath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/generate/cli2srv/login/Auth.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth/src/main/java/auth/handler/AuthServerHandler.java" afterPath="$PROJECT_DIR$/auth/src/main/java/auth/handler/AuthServerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/client/ClientHandler.java" afterPath="$PROJECT_DIR$/client/src/main/java/client/ClientHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java" afterPath="$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth/src/main/java/auth/utils/Common.java" afterPath="$PROJECT_DIR$/auth/src/main/java/auth/utils/Common.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java" afterPath="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateLogicConnectionHandler.java" afterPath="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateLogicConnectionHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java" afterPath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java" afterPath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/redis/utils/UserUtils.java" afterPath="$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/redis/utils/UserUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/src/main/resources/cli_def/login.proto" afterPath="$PROJECT_DIR$/protobuf/src/main/resources/cli_def/login.proto" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/protobuf/src/main/resources/proto.bat" afterPath="$PROJECT_DIR$/protobuf/src/main/resources/proto.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/thrift.bat" afterPath="$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/thrift.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/user.thrift" afterPath="$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/user.thrift" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\MyProject\IM\face2face\protobuf\src\main\java\protobuf\utils.java" afterPath="$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java" />
     </list>
     <ignored path="face2face.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,192 +55,90 @@
       <file leaf-file-name="AuthServerHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auth/src/main/java/auth/handler/AuthServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="1615">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1148" max-vertical-offset="1729">
+              <caret line="83" column="37" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#862#863#0" expanded="true" />
-                <element signature="e#904#905#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.thrift" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/user.thrift">
+      <file leaf-file-name="GateAuthConnectionHandler.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15113637" vertical-offset="0" max-vertical-offset="880">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5181818" vertical-offset="0" max-vertical-offset="880">
+              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Auth.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/generate/cli2srv/login/Auth.java">
+      <file leaf-file-name="ClientConnectionMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnectionMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="18707" max-vertical-offset="48108">
-              <caret line="1001" column="12" selection-start-line="1001" selection-start-column="12" selection-end-line="1001" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="950">
+              <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="836">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
-                <element signature="e#1686#1687#0" expanded="true" />
-                <element signature="e#1722#1723#0" expanded="true" />
-                <element signature="e#1774#1775#0" expanded="true" />
-                <element signature="e#1810#1811#0" expanded="true" />
-                <element signature="e#1986#1987#0" expanded="true" />
-                <element signature="e#2025#2026#0" expanded="true" />
-                <element signature="e#3636#3637#0" expanded="true" />
-                <element signature="e#3730#3731#0" expanded="true" />
-                <element signature="e#4649#4650#0" expanded="true" />
-                <element signature="e#4676#4677#0" expanded="true" />
-                <element signature="e#4928#4929#0" expanded="true" />
-                <element signature="e#4990#4991#0" expanded="true" />
-                <element signature="e#6176#6177#0" expanded="true" />
-                <element signature="e#6238#6239#0" expanded="true" />
-                <element signature="e#12379#12380#0" expanded="true" />
-                <element signature="e#12477#12478#0" expanded="true" />
-                <element signature="e#12990#12991#0" expanded="true" />
-                <element signature="e#13041#13042#0" expanded="true" />
-                <element signature="e#13398#13399#0" expanded="true" />
-                <element signature="e#13436#13437#0" expanded="true" />
-                <element signature="e#13694#13695#0" expanded="true" />
-                <element signature="e#13753#13754#0" expanded="true" />
-                <element signature="e#13845#13846#0" expanded="true" />
-                <element signature="e#13943#13944#0" expanded="true" />
-                <element signature="e#17092#17093#0" expanded="true" />
-                <element signature="e#17158#17159#0" expanded="true" />
-                <element signature="e#19172#19173#0" expanded="true" />
-                <element signature="e#19238#19239#0" expanded="true" />
-                <element signature="e#24026#24027#0" expanded="true" />
-                <element signature="e#24062#24063#0" expanded="true" />
-                <element signature="e#24111#24112#0" expanded="true" />
-                <element signature="e#24147#24148#0" expanded="true" />
-                <element signature="e#24323#24324#0" expanded="true" />
-                <element signature="e#24362#24363#0" expanded="true" />
-                <element signature="e#26258#26259#0" expanded="true" />
-                <element signature="e#26349#26350#0" expanded="true" />
-                <element signature="e#27244#27245#0" expanded="true" />
-                <element signature="e#27271#27272#0" expanded="true" />
-                <element signature="e#27571#27572#0" expanded="true" />
-                <element signature="e#27633#27634#0" expanded="true" />
-                <element signature="e#28961#28962#0" expanded="true" />
-                <element signature="e#29023#29024#0" expanded="true" />
-                <element signature="e#30374#30375#0" expanded="true" />
-                <element signature="e#30436#30437#0" expanded="true" />
-                <element signature="e#31835#31836#0" expanded="true" />
-                <element signature="e#31897#31898#0" expanded="true" />
-                <element signature="e#38743#38744#0" expanded="true" />
-                <element signature="e#38838#38839#0" expanded="true" />
-                <element signature="e#39339#39340#0" expanded="true" />
-                <element signature="e#39390#39391#0" expanded="true" />
-                <element signature="e#39747#39748#0" expanded="true" />
-                <element signature="e#39785#39786#0" expanded="true" />
-                <element signature="e#40191#40192#0" expanded="true" />
-                <element signature="e#40250#40251#0" expanded="true" />
-                <element signature="e#40342#40343#0" expanded="true" />
-                <element signature="e#40437#40438#0" expanded="true" />
-                <element signature="e#44197#44198#0" expanded="true" />
-                <element signature="e#44263#44264#0" expanded="true" />
-                <element signature="e#46611#46612#0" expanded="true" />
-                <element signature="e#46677#46678#0" expanded="true" />
-                <element signature="e#49040#49041#0" expanded="true" />
-                <element signature="e#49106#49107#0" expanded="true" />
-                <element signature="e#51585#51586#0" expanded="true" />
-                <element signature="e#51651#51652#0" expanded="true" />
-                <element signature="e#55583#55584#0" expanded="true" />
-                <element signature="e#55619#55620#0" expanded="true" />
-                <element signature="e#55671#55672#0" expanded="true" />
-                <element signature="e#55707#55708#0" expanded="true" />
-                <element signature="e#55883#55884#0" expanded="true" />
-                <element signature="e#55922#55923#0" expanded="true" />
-                <element signature="e#57528#57529#0" expanded="true" />
-                <element signature="e#57622#57623#0" expanded="true" />
-                <element signature="e#58541#58542#0" expanded="true" />
-                <element signature="e#58568#58569#0" expanded="true" />
-                <element signature="e#58839#58840#0" expanded="true" />
-                <element signature="e#58901#58902#0" expanded="true" />
-                <element signature="e#59033#59034#0" expanded="true" />
-                <element signature="e#59059#59060#0" expanded="true" />
-                <element signature="e#59316#59317#0" expanded="true" />
-                <element signature="e#59378#59379#0" expanded="true" />
-                <element signature="e#65642#65643#0" expanded="true" />
-                <element signature="e#65740#65741#0" expanded="true" />
-                <element signature="e#66253#66254#0" expanded="true" />
-                <element signature="e#66304#66305#0" expanded="true" />
-                <element signature="e#66661#66662#0" expanded="true" />
-                <element signature="e#66699#66700#0" expanded="true" />
-                <element signature="e#66952#66953#0" expanded="true" />
-                <element signature="e#67011#67012#0" expanded="true" />
-                <element signature="e#67103#67104#0" expanded="true" />
-                <element signature="e#67201#67202#0" expanded="true" />
-                <element signature="e#70297#70298#0" expanded="true" />
-                <element signature="e#70363#70364#0" expanded="true" />
-                <element signature="e#70511#70512#0" expanded="true" />
-                <element signature="e#70541#70542#0" expanded="true" />
-                <element signature="e#71312#71313#0" expanded="true" />
-                <element signature="e#71378#71379#0" expanded="true" />
-                <element signature="e#74426#74427#0" expanded="true" />
-                <element signature="e#74453#74454#0" expanded="true" />
+                <element signature="e#1147#1148#0" expanded="true" />
+                <element signature="e#1174#1175#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/generate/db/user/Account.java">
+      <file leaf-file-name="ParseRegistryMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2167" max-vertical-offset="9101">
-              <caret line="145" column="17" selection-start-line="145" selection-start-column="17" selection-end-line="145" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+              <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="79" />
               <folding>
-                <element signature="e#1323#1364#0" expanded="true" />
-                <element signature="e#1915#1932#0" expanded="true" />
-                <element signature="e#2912#2913#0" expanded="true" />
-                <element signature="e#2949#2950#0" expanded="true" />
-                <element signature="e#3174#3175#0" expanded="true" />
-                <element signature="e#3204#3205#0" expanded="true" />
-                <element signature="e#3240#3241#0" expanded="true" />
-                <element signature="e#3271#3272#0" expanded="true" />
-                <element signature="e#3486#3538#0" expanded="true" />
-                <element signature="e#4610#4611#0" expanded="true" />
-                <element signature="e#4644#4645#0" expanded="true" />
-                <element signature="e#4764#4765#0" expanded="true" />
-                <element signature="e#4792#4793#0" expanded="true" />
-                <element signature="e#4915#4916#0" expanded="true" />
-                <element signature="e#4943#4944#0" expanded="true" />
-                <element signature="e#5070#5071#0" expanded="true" />
-                <element signature="e#5106#5107#0" expanded="true" />
-                <element signature="e#5238#5239#0" expanded="true" />
-                <element signature="e#5266#5267#0" expanded="true" />
-                <element signature="e#5389#5390#0" expanded="true" />
-                <element signature="e#5417#5418#0" expanded="true" />
-                <element signature="e#5544#5545#0" expanded="true" />
-                <element signature="e#5580#5581#0" expanded="true" />
-                <element signature="e#8944#8945#0" expanded="true" />
-                <element signature="e#8992#8993#0" expanded="true" />
-                <element signature="e#10762#10763#0" expanded="true" />
-                <element signature="e#10810#10811#0" expanded="true" />
-                <element signature="e#13014#13015#0" expanded="true" />
-                <element signature="e#13059#13060#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/redis/utils/UserUtils.java">
+      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="608">
-              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="950">
+              <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GateServerHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateServerHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="532">
+              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Common.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auth/src/main/java/auth/utils/Common.java">
+      <file leaf-file-name="ClientMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="665">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="1444">
+              <caret line="47" column="78" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -253,33 +146,11 @@
       <file leaf-file-name="ParseMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="950">
-              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.proto" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protobuf/src/main/resources/cli_def/login.proto">
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="589">
-              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/client/ClientHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="1026">
-              <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="1026">
+              <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1470#1471#0" expanded="true" />
+                <element signature="e#1513#1514#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -294,9 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateLogicConnectionHandler.java" />
-        <option value="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java" />
-        <option value="$PROJECT_DIR$/gate/src/main/java/gate/GateLogicConnection.java" />
         <option value="$PROJECT_DIR$/logic/src/main/java/logic/handler/LogicServerHandler.java" />
         <option value="$PROJECT_DIR$/gate/src/main/java/gate/GateAuthConnection.java" />
         <option value="$PROJECT_DIR$/chat-client/src/main/java/client/ClientHandler.java" />
@@ -306,7 +174,6 @@
         <option value="$PROJECT_DIR$/client/pom.xml" />
         <option value="$PROJECT_DIR$/client/src/main/java/ClientHandler.java" />
         <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/code/PacketDecoder.java" />
-        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java" />
         <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/TransferHandlerMap.java" />
         <option value="$PROJECT_DIR$/gate/src/main/java/gate/TransferHandlerMap.java" />
         <option value="$PROJECT_DIR$/gate/src/main/java/gate/starter/GateStarter.java" />
@@ -314,8 +181,6 @@
         <option value="$PROJECT_DIR$/gate/src/main/java/gate/GateServer.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/client/src/main/java/client/Client.java" />
-        <option value="$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnection.java" />
-        <option value="$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnectionMap.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/thirdparty/src/main/java/thridparty/redis/RedisUtils.java" />
         <option value="$PROJECT_DIR$/thirdparty/src/main/java/thridparty/redis/Utils/RedisUtils.java" />
@@ -335,16 +200,22 @@
         <option value="$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/thrift.bat" />
         <option value="$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/utils/DBOperator.java" />
         <option value="$PROJECT_DIR$/protobuf/src/main/resources/proto.bat" />
-        <option value="$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java" />
-        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/utils.java" />
-        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java" />
-        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/client/ClientHandler.java" />
         <option value="$PROJECT_DIR$/protobuf/src/main/resources/cli_def/login.proto" />
         <option value="$PROJECT_DIR$/thirdparty/src/main/resources/dbdef/user.thrift" />
         <option value="$PROJECT_DIR$/auth/src/main/java/auth/utils/Common.java" />
         <option value="$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/redis/utils/UserUtils.java" />
+        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/utils.java" />
+        <option value="$PROJECT_DIR$/protobuf/src/main/resources/internal_def/internal.proto" />
+        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java" />
+        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateLogicConnectionHandler.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java" />
         <option value="$PROJECT_DIR$/auth/src/main/java/auth/handler/AuthServerHandler.java" />
+        <option value="$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnectionMap.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnection.java" />
+        <option value="$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java" />
       </list>
     </option>
   </component>
@@ -441,6 +312,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -665,7 +537,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -679,7 +551,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -697,33 +569,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="face2face" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="face2face" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -734,14 +580,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cli_def" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -753,7 +591,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -769,7 +607,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -783,7 +621,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -799,15 +637,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="generate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cli2srv" />
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -821,7 +655,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -837,11 +671,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="protobuf" />
+              <option name="myItemId" value="gate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
+              <option name="myItemId" value="handler" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1037,7 +871,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1070,11 +903,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyProject\IM\face2face\protobuf\src\main\resources" />
+      <recent name="D:\MyProject\IM\face2face\protobuf\src\main\resources\internal_def" />
       <recent name="D:\MyProject\IM\face2face\thirdparty\src\main\resources\dbdef" />
       <recent name="D:\MyProject\IM\face2face\thirdparty\src\main" />
       <recent name="D:\MyProject\IM\face2face\client" />
-      <recent name="D:\MyProject\IM\face2face\client\src\main\java" />
-      <recent name="D:\MyProject\IM\face2face\chat-client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\MyProject\face2face\dbdef" />
@@ -1493,11 +1326,12 @@
       <workItem from="1456103258842" duration="9503000" />
       <workItem from="1456129583563" duration="3546000" />
       <workItem from="1456188704049" duration="7091000" />
+      <workItem from="1456197029059" duration="4866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103022000" />
+    <option name="totallyTimeSpent" value="107888000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1532,7 +1366,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12553419" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12660256" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49064907" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1585,73 +1419,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.0.34.Final/netty-all-4.0.34.Final.jar!/io/netty/channel/AbstractChannelHandlerContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35091743" vertical-offset="3742" max-vertical-offset="14706">
-          <caret line="272" column="17" selection-start-line="272" selection-start-column="17" selection-end-line="272" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/TransferHandlerMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23325893" vertical-offset="0" max-vertical-offset="896">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="896">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/threedes/ThreeDES.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9296875" vertical-offset="985" max-vertical-offset="1881">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13669065" vertical-offset="0" max-vertical-offset="417">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main/java/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1102">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logic/src/main/java/logic/handler/LogicServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4965909" vertical-offset="0" max-vertical-offset="880">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logic/src/main/java/logic/LogicServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1349">
-          <caret line="36" column="79" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2590909" vertical-offset="0" max-vertical-offset="880">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1443182" vertical-offset="342" max-vertical-offset="1786">
@@ -1803,22 +1570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnectionMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15113637" vertical-offset="0" max-vertical-offset="880">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="779">
-          <caret line="18" column="49" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/utils/DBOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="437">
@@ -1851,262 +1602,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/code/PacketDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="1292">
-          <caret line="39" column="60" selection-start-line="39" selection-start-column="60" selection-end-line="39" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/code/PacketEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="741">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="380">
-          <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/resources/proto.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24444444" vertical-offset="0" max-vertical-offset="855">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="241" max-vertical-offset="1121">
-          <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/main/java/client/ClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="1026">
           <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/auth/src/main/java/auth/handler/AuthServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="1615">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#862#863#0" expanded="true" />
-            <element signature="e#904#905#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/generate/cli2srv/login/Auth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18707" max-vertical-offset="48108">
-          <caret line="1001" column="12" selection-start-line="1001" selection-start-column="12" selection-end-line="1001" selection-end-column="12" />
-          <folding>
-            <element signature="e#1686#1687#0" expanded="true" />
-            <element signature="e#1722#1723#0" expanded="true" />
-            <element signature="e#1774#1775#0" expanded="true" />
-            <element signature="e#1810#1811#0" expanded="true" />
-            <element signature="e#1986#1987#0" expanded="true" />
-            <element signature="e#2025#2026#0" expanded="true" />
-            <element signature="e#3636#3637#0" expanded="true" />
-            <element signature="e#3730#3731#0" expanded="true" />
-            <element signature="e#4649#4650#0" expanded="true" />
-            <element signature="e#4676#4677#0" expanded="true" />
-            <element signature="e#4928#4929#0" expanded="true" />
-            <element signature="e#4990#4991#0" expanded="true" />
-            <element signature="e#6176#6177#0" expanded="true" />
-            <element signature="e#6238#6239#0" expanded="true" />
-            <element signature="e#12379#12380#0" expanded="true" />
-            <element signature="e#12477#12478#0" expanded="true" />
-            <element signature="e#12990#12991#0" expanded="true" />
-            <element signature="e#13041#13042#0" expanded="true" />
-            <element signature="e#13398#13399#0" expanded="true" />
-            <element signature="e#13436#13437#0" expanded="true" />
-            <element signature="e#13694#13695#0" expanded="true" />
-            <element signature="e#13753#13754#0" expanded="true" />
-            <element signature="e#13845#13846#0" expanded="true" />
-            <element signature="e#13943#13944#0" expanded="true" />
-            <element signature="e#17092#17093#0" expanded="true" />
-            <element signature="e#17158#17159#0" expanded="true" />
-            <element signature="e#19172#19173#0" expanded="true" />
-            <element signature="e#19238#19239#0" expanded="true" />
-            <element signature="e#24026#24027#0" expanded="true" />
-            <element signature="e#24062#24063#0" expanded="true" />
-            <element signature="e#24111#24112#0" expanded="true" />
-            <element signature="e#24147#24148#0" expanded="true" />
-            <element signature="e#24323#24324#0" expanded="true" />
-            <element signature="e#24362#24363#0" expanded="true" />
-            <element signature="e#26258#26259#0" expanded="true" />
-            <element signature="e#26349#26350#0" expanded="true" />
-            <element signature="e#27244#27245#0" expanded="true" />
-            <element signature="e#27271#27272#0" expanded="true" />
-            <element signature="e#27571#27572#0" expanded="true" />
-            <element signature="e#27633#27634#0" expanded="true" />
-            <element signature="e#28961#28962#0" expanded="true" />
-            <element signature="e#29023#29024#0" expanded="true" />
-            <element signature="e#30374#30375#0" expanded="true" />
-            <element signature="e#30436#30437#0" expanded="true" />
-            <element signature="e#31835#31836#0" expanded="true" />
-            <element signature="e#31897#31898#0" expanded="true" />
-            <element signature="e#38743#38744#0" expanded="true" />
-            <element signature="e#38838#38839#0" expanded="true" />
-            <element signature="e#39339#39340#0" expanded="true" />
-            <element signature="e#39390#39391#0" expanded="true" />
-            <element signature="e#39747#39748#0" expanded="true" />
-            <element signature="e#39785#39786#0" expanded="true" />
-            <element signature="e#40191#40192#0" expanded="true" />
-            <element signature="e#40250#40251#0" expanded="true" />
-            <element signature="e#40342#40343#0" expanded="true" />
-            <element signature="e#40437#40438#0" expanded="true" />
-            <element signature="e#44197#44198#0" expanded="true" />
-            <element signature="e#44263#44264#0" expanded="true" />
-            <element signature="e#46611#46612#0" expanded="true" />
-            <element signature="e#46677#46678#0" expanded="true" />
-            <element signature="e#49040#49041#0" expanded="true" />
-            <element signature="e#49106#49107#0" expanded="true" />
-            <element signature="e#51585#51586#0" expanded="true" />
-            <element signature="e#51651#51652#0" expanded="true" />
-            <element signature="e#55583#55584#0" expanded="true" />
-            <element signature="e#55619#55620#0" expanded="true" />
-            <element signature="e#55671#55672#0" expanded="true" />
-            <element signature="e#55707#55708#0" expanded="true" />
-            <element signature="e#55883#55884#0" expanded="true" />
-            <element signature="e#55922#55923#0" expanded="true" />
-            <element signature="e#57528#57529#0" expanded="true" />
-            <element signature="e#57622#57623#0" expanded="true" />
-            <element signature="e#58541#58542#0" expanded="true" />
-            <element signature="e#58568#58569#0" expanded="true" />
-            <element signature="e#58839#58840#0" expanded="true" />
-            <element signature="e#58901#58902#0" expanded="true" />
-            <element signature="e#59033#59034#0" expanded="true" />
-            <element signature="e#59059#59060#0" expanded="true" />
-            <element signature="e#59316#59317#0" expanded="true" />
-            <element signature="e#59378#59379#0" expanded="true" />
-            <element signature="e#65642#65643#0" expanded="true" />
-            <element signature="e#65740#65741#0" expanded="true" />
-            <element signature="e#66253#66254#0" expanded="true" />
-            <element signature="e#66304#66305#0" expanded="true" />
-            <element signature="e#66661#66662#0" expanded="true" />
-            <element signature="e#66699#66700#0" expanded="true" />
-            <element signature="e#66952#66953#0" expanded="true" />
-            <element signature="e#67011#67012#0" expanded="true" />
-            <element signature="e#67103#67104#0" expanded="true" />
-            <element signature="e#67201#67202#0" expanded="true" />
-            <element signature="e#70297#70298#0" expanded="true" />
-            <element signature="e#70363#70364#0" expanded="true" />
-            <element signature="e#70511#70512#0" expanded="true" />
-            <element signature="e#70541#70542#0" expanded="true" />
-            <element signature="e#71312#71313#0" expanded="true" />
-            <element signature="e#71378#71379#0" expanded="true" />
-            <element signature="e#74426#74427#0" expanded="true" />
-            <element signature="e#74453#74454#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/redis/utils/UserUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="608">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/auth/src/main/java/auth/utils/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="665">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="950">
-          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protobuf/src/main/resources/cli_def/login.proto">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="589">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/generate/db/user/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2338" max-vertical-offset="9101">
-          <caret line="145" column="17" selection-start-line="145" selection-start-column="17" selection-end-line="145" selection-end-column="17" />
-          <folding>
-            <element signature="e#1323#1364#0" expanded="true" />
-            <element signature="e#1915#1932#0" expanded="true" />
-            <element signature="e#2912#2913#0" expanded="true" />
-            <element signature="e#2949#2950#0" expanded="true" />
-            <element signature="e#3174#3175#0" expanded="true" />
-            <element signature="e#3204#3205#0" expanded="true" />
-            <element signature="e#3240#3241#0" expanded="true" />
-            <element signature="e#3271#3272#0" expanded="true" />
-            <element signature="e#3486#3538#0" expanded="true" />
-            <element signature="e#4610#4611#0" expanded="true" />
-            <element signature="e#4644#4645#0" expanded="true" />
-            <element signature="e#4764#4765#0" expanded="true" />
-            <element signature="e#4792#4793#0" expanded="true" />
-            <element signature="e#4915#4916#0" expanded="true" />
-            <element signature="e#4943#4944#0" expanded="true" />
-            <element signature="e#5070#5071#0" expanded="true" />
-            <element signature="e#5106#5107#0" expanded="true" />
-            <element signature="e#5238#5239#0" expanded="true" />
-            <element signature="e#5266#5267#0" expanded="true" />
-            <element signature="e#5389#5390#0" expanded="true" />
-            <element signature="e#5417#5418#0" expanded="true" />
-            <element signature="e#5544#5545#0" expanded="true" />
-            <element signature="e#5580#5581#0" expanded="true" />
-            <element signature="e#8944#8945#0" expanded="true" />
-            <element signature="e#8992#8993#0" expanded="true" />
-            <element signature="e#10762#10763#0" expanded="true" />
-            <element signature="e#10810#10811#0" expanded="true" />
-            <element signature="e#13014#13015#0" expanded="true" />
-            <element signature="e#13059#13060#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2115,6 +1616,230 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15113637" vertical-offset="0" max-vertical-offset="880">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/resources/proto.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35555556" vertical-offset="0" max-vertical-offset="855">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/thrift/generate/db/user/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4152249" vertical-offset="1977" max-vertical-offset="8607">
+          <caret line="145" column="17" selection-start-line="145" selection-start-column="17" selection-end-line="145" selection-end-column="17" />
+          <folding>
+            <element signature="e#1323#1364#0" expanded="false" />
+            <element signature="e#1915#1932#0" expanded="false" />
+            <element signature="e#3486#3538#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/resources/cli_def/login.proto">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23058252" vertical-offset="0" max-vertical-offset="824">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth/src/main/java/auth/utils/Common.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34545454" vertical-offset="0" max-vertical-offset="880">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/thirdparty/src/main/java/thirdparty/redis/utils/UserUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36704546" vertical-offset="0" max-vertical-offset="880">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/2.6.1/protobuf-java-2.6.1.jar!/com/google/protobuf/ByteString.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.24" vertical-offset="3258" max-vertical-offset="7467">
+          <caret line="207" column="18" selection-start-line="207" selection-start-column="18" selection-end-line="207" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/resources/internal_def/internal.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.84" vertical-offset="0" max-vertical-offset="380">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/generate/internal/Internal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5241" max-vertical-offset="14611">
+          <caret line="321" column="42" selection-start-line="321" selection-start-column="42" selection-end-line="321" selection-end-column="42" />
+          <folding>
+            <element signature="e#9416#9417#0" expanded="true" />
+            <element signature="e#9441#9442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/code/PacketEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="741">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_05/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9535" max-vertical-offset="43966">
+          <caret line="553" column="13" selection-start-line="553" selection-start-column="13" selection-end-line="553" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/2.6.1/protobuf-java-2.6.1.jar!/com/google/protobuf/GeneratedMessage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.56" vertical-offset="0" max-vertical-offset="29051">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/2.6.1/protobuf-java-2.6.1.jar!/com/google/protobuf/Message.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.56" vertical-offset="0" max-vertical-offset="1539">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/generate/cli2srv/login/Auth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30568182" vertical-offset="33817" max-vertical-offset="46246">
+          <caret line="1859" column="40" selection-start-line="1859" selection-start-column="40" selection-end-line="1859" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/code/PacketDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="92" max-vertical-offset="1292">
+          <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/TransferHandlerMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth/src/main/java/auth/handler/AuthServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1148" max-vertical-offset="1729">
+          <caret line="83" column="37" selection-start-line="83" selection-start-column="32" selection-end-line="83" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/analysis/ParseMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="1026">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+          <folding>
+            <element signature="e#1470#1471#0" expanded="true" />
+            <element signature="e#1513#1514#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateLogicConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4318182" vertical-offset="0" max-vertical-offset="880">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/ParseRegistryMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="494">
+          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/ClientMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="1444">
+          <caret line="47" column="78" selection-start-line="47" selection-start-column="78" selection-end-line="47" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="532">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="836">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#1147#1148#0" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/utils/ClientConnectionMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="950">
+          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protobuf/src/main/java/protobuf/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="950">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gate/src/main/java/gate/handler/GateAuthConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5181818" vertical-offset="0" max-vertical-offset="880">
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
           <folding />
         </state>
       </provider>
