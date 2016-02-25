@@ -58,9 +58,10 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
         //todo 写数据库要加锁
         Jedis jedis = AuthStarter._redisPoolManager.getJedis();
 
-        if (jedis.exists(UserUtils.genDBKey(userid))) {
+        if (!jedis.exists(UserUtils.genDBKey(userid))) {
             sendResponse(404, "Account already exists", netId);
             logger.info("Account already exists, userid: {}", userid);
+            return;
         } else {
             jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
             sendResponse(400, "User registerd successd", netId);
@@ -71,19 +72,21 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
     void dealWithAuthCmd(Auth.CLogin msg, long netId) throws TException {
         Jedis jedis = AuthStarter._redisPoolManager.getJedis();
         String userId = msg.getUserid();
-        Account account = null;
-        byte[] userIdBytes = jedis.hget(UserUtils.genDBKey(userId), UserUtils.userFileds.Account.field);
-        if(userIdBytes == null) {
-            sendResponse(404, "Account is not registered", netId);
+        Account account;
+
+        if(!jedis.exists(UserUtils.genDBKey(userId))) {
+            sendResponse(404, "Account not exists", netId);
+            logger.info("Account not exists, userid: {}", userId);
+            return;
         } else {
+            byte[] userIdBytes = jedis.hget(UserUtils.genDBKey(userId), UserUtils.userFileds.Account.field);
             account = DBOperator.Deserialize(new Account(), userIdBytes);
         }
 
         if(account.getUserid().equals(msg.getUserid()) && account.getPasswd().equals(msg.getPasswd())) {
             sendResponse(200, "Verify passed", netId);
             logger.info("userid: {} verify passed", userId);
-        }
-        else {
+        } else {
             sendResponse(404, "Account not exist or passwd error", netId);
             logger.info("userid: {} verify failed", userId);
         }
