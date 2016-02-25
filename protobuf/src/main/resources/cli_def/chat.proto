@@ -1,0 +1,8 @@
+option java_package = "protobuf.generate.cli2srv.chat";
+option java_outer_classname = "Chat";
+
+message CPrivateChat {
+	required string self = 1;       //发送消息者的userid
+	required string dest = 2;       //消息目标的userid
+	required string content = 3;    //消息内容
+}

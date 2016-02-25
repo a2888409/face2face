@@ -14,6 +14,7 @@ import protobuf.generate.cli2srv.login.Auth;
  */
 public class ClientHandler extends SimpleChannelInboundHandler<Message> {
     private static final Logger logger = LoggerFactory.getLogger(ClientHandler.class);
+    String _userId = "qzy";
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
@@ -46,9 +47,24 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
         logger.info("received message: {}", msg.getClass());
         if(msg instanceof Auth.SResponse) {
             Auth.SResponse sp = (Auth.SResponse) msg;
-            logger.info("received SResponse, code: {}, description: {}", sp.getCode(), sp.getDesc());
+            int code = sp.getCode();
+            String desc = sp.getDesc();
+            switch (code) {
+                case 400 :
+                    logger.info("Login succeed, description: {}", desc);
+                case 404:
+                    logger.info("Login Failed, description: {}", desc);
+            }
         }
 
+
+    }
+
+    void loop() {
+        logger.info("WelCome to face2face Chat room !");
+        while(true) {
+
+        }
     }
 
     @Override

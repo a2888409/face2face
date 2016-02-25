@@ -3,7 +3,7 @@ REM cd D:\project\face2face\protobuf\src\main\resources
 cd D:\MyProject\IM\face2face\protobuf\src\main\resources
 
 set OUT=../java
-set def_cli_java=(login)
+set def_cli_java=(login chat)
 set def_internal_java=(internal)
 
 

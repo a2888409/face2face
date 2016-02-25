@@ -18,6 +18,7 @@ public class ClientConnection {
     ClientConnection(ChannelHandlerContext c) {
         _netId = netidGenerator.incrementAndGet();
         _ctx = c;
+        _ctx.attr(ClientConnection.NETID).set(_netId);
     }
 
     private static final Logger logger = LoggerFactory.getLogger(ClientConnection.class);
@@ -35,6 +36,10 @@ public class ClientConnection {
 
     public String getUserId() {
         return _userId;
+    }
+
+    public void setUserId(String userId) {
+        _userId = userId;
     }
 
     public void readUserIdFromDB() {

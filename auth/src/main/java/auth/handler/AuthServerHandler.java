@@ -6,6 +6,7 @@ package auth.handler;
 
 import auth.starter.AuthStarter;
 import com.google.protobuf.Message;
+import gate.utils.ClientConnectionMap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -83,13 +84,16 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
             account = DBOperator.Deserialize(new Account(), userIdBytes);
         }
 
-        if(account.getUserid().equals(msg.getUserid()) && account.getPasswd().equals(msg.getPasswd())) {
+        if(account.getUserid().equals(userId) && account.getPasswd().equals(msg.getPasswd())) {
+            ClientConnectionMap.registerUserid(userId, netId);
             sendResponse(200, "Verify passed", netId);
             logger.info("userid: {} verify passed", userId);
         } else {
             sendResponse(404, "Account not exist or passwd error", netId);
             logger.info("userid: {} verify failed", userId);
+            return;
         }
+
     }
 
     void sendResponse(int code, String desc, long netId) {
