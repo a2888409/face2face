@@ -14,7 +14,7 @@ public class ClientConnectionMap {
 
     //保存一个gateway上所有的客户端连接
     public static ConcurrentHashMap<Long, ClientConnection> allClientMap = new ConcurrentHashMap<>();
-    public static ConcurrentHashMap<String, Long> userid2netidMap = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, Long> userid2netidMap = new ConcurrentHashMap<>();
 
     public static ClientConnection getClientConnection(ChannelHandlerContext ctx) {
         Long netId = ctx.attr(ClientConnection.NETID).get();

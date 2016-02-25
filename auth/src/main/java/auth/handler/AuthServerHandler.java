@@ -42,6 +42,7 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
         long netId = gt.getNetId();
         Message msg = ParseMap.getMessage(gt.getPtoNum(), gt.getMsg().toByteArray());
 
+        //todo 正确做法是创建几个工作线程，再将message对应的hanler dispatch进去
         if(msg instanceof Auth.CRegister)
             dealWithRegistry((Auth.CRegister)msg, netId);
         else if(msg instanceof Auth.CLogin)

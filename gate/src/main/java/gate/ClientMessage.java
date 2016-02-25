@@ -4,11 +4,13 @@ import com.google.protobuf.Message;
 import gate.handler.GateAuthConnectionHandler;
 import gate.handler.GateLogicConnectionHandler;
 import gate.utils.ClientConnection;
+import gate.utils.ClientConnectionMap;
 import io.netty.buffer.ByteBuf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.Utils;
 import protobuf.analysis.ParseMap;
+import protobuf.generate.cli2srv.chat.Chat;
 import protobuf.generate.internal.Internal;
 
 import java.io.IOException;
@@ -56,7 +58,11 @@ public class ClientMessage {
     }
 
     public static void transfer2Logic(Message msg, ClientConnection conn) {
-        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Logic);
+        ByteBuf byteBuf = null;
+        if(msg instanceof Chat.CPrivateChat) {
+            long dest_netid = ClientConnectionMap.userid2netid(conn.getUserId()); //目标的netid
+            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), dest_netid, Internal.Dest.Logic);
+        }
 
         GateLogicConnectionHandler.getGatelogicConnection().writeAndFlush(byteBuf);
     }
