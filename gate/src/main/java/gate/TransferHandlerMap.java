@@ -10,5 +10,6 @@ import java.io.IOException;
 public class TransferHandlerMap {
     public static void initRegistry() throws IOException {
         ClientMessage.registerTranferHandler(1000, ClientMessage::transfer2Auth, Auth.CLogin.class);
+        ClientMessage.registerTranferHandler(1001, ClientMessage::transfer2Auth, Auth.CRegister.class);
     }
 }

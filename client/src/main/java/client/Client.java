@@ -5,6 +5,9 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
 
@@ -16,6 +19,8 @@ public class Client {
     static final String HOST = System.getProperty("host", "127.0.0.1");
     static final int PORT = Integer.parseInt(System.getProperty("port", "9090"));
     static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
+
+    private static final Logger logger = LoggerFactory.getLogger(Client.class);
 
     public static void main(String[] args) throws Exception {
 
@@ -39,7 +44,19 @@ public class Client {
                     });
 
             // Start the client.
-            ChannelFuture f = b.connect(HOST, PORT).sync();
+            ChannelFuture f = b.connect(HOST, PORT).addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future)
+                        throws Exception {
+                    if (future.isSuccess()) {
+                        //init registry
+                        ParseRegistryMap.initRegistry();
+                        logger.info("Client connected Gate Successed...");
+                    } else {
+                        logger.error("Client connected Gate Failed");
+                    }
+                }
+            });
 
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();
