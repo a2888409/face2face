@@ -2,11 +2,13 @@ package auth;
 
 import com.google.protobuf.Message;
 import io.netty.channel.ChannelHandlerContext;
+import auth.*;
+import org.apache.thrift.TException;
 
 /**
  * Created by Dell on 2016/3/2.
  */
-public class IMHandler {
+public abstract class IMHandler {
     protected final String _userid;
     protected final long  _netid;
     protected final Message _msg;
@@ -18,4 +20,6 @@ public class IMHandler {
         _msg = msg;
         _ctx = ctx;
     }
+
+    protected abstract void excute(Worker worker) throws TException;
 }

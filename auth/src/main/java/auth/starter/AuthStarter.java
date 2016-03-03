@@ -1,6 +1,7 @@
 package auth.starter;
 
 import auth.AuthServer;
+import javafx.concurrent.Worker;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,8 @@ public class AuthStarter {
     private static File cfg = null;
     private static File log = null;
     public static RedisPoolManager _redisPoolManager;
+    public static int workNum = 1;
+    public static auth.Worker[] workers;
 
     public static void main(String[] args) throws Exception {
 
@@ -52,6 +55,8 @@ public class AuthStarter {
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
             element = (Element)nodeList.item(0);
             int authListenPort = Integer.parseInt(element.getAttribute("port"));
+            workNum = Integer.parseInt(element.getAttribute("workNum"));
+            workers = auth.Worker.startWorker(workNum);
             logger.info("Authserver authListenPort " + authListenPort);
 
             xPathExpression  = xPath.compile("/auth/redis");
