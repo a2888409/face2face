@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
+import protobuf.generate.cli2srv.login.Auth;
 
 import java.net.InetSocketAddress;
 
@@ -50,6 +51,7 @@ public class AuthServer {
                     throws Exception {
                 if (future.isSuccess()) {
                     //init registry
+                    initHandlers();
                     ParseRegistryMap.initRegistry();
                     logger.info("[AuthServer] Started Successed, waiting for other server connect...");
                 } else {
@@ -68,5 +70,10 @@ public class AuthServer {
         bootstrap.childOption(ChannelOption.SO_REUSEADDR, true); //调试用
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true); //心跳机制暂时使用TCP选项，之后再自己实现
 
+    }
+
+    private static void initHandlers() {
+        HandlerManager.register(Auth.CLogin.class, CLoginHandler.class);
+        HandlerManager.register(Auth.CRegister.class, CRegisterHandler.class);
     }
 }

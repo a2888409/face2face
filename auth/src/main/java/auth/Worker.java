@@ -4,27 +4,41 @@ import auth.starter.AuthStarter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Dell on 2016/3/2.
  */
 public class Worker extends Thread {
     private static final Logger logger = LoggerFactory.getLogger(Worker.class);
+    public static Worker[] _workers;
 
-    public static boolean _stop =false;
-    public static ConcurrentLinkedDeque<IMHandler> _tasks = new ConcurrentLinkedDeque<>();
+    public  boolean _stop =false;
+    private final BlockingQueue<IMHandler> _tasks = new LinkedBlockingDeque<>();
 
-    public static void dispatch(IMHandler handler) {
-        _tasks.offer(handler);
+    public static void dispatch(String userId, IMHandler handler) {
+        int workId = getWorkId(userId);
+        if(handler == null)
+            logger.error("handler is null");
+
+        _workers[workId]._tasks.offer(handler);
     }
 
     @Override
     public void run() {
         while(!_stop) {
-            //todo 如何取
-            IMHandler handler = _tasks.poll();
+            IMHandler handler = null;
             try {
+                handler = _tasks.poll(600, TimeUnit.MILLISECONDS);
+                if(handler == null)
+                    continue;
+            } catch (InterruptedException e) {
+                logger.error("Caught Exception");
+            }
+            try {
+                assert handler != null;
                 handler.excute(this);
             } catch (Exception e) {
                 logger.error("Caught Exception");
@@ -36,11 +50,16 @@ public class Worker extends Thread {
         return str.hashCode() % AuthStarter.workNum;
     }
 
-    public static Worker[] startWorker(int workNum) {
-        Worker[] workers = new Worker[workNum];
+    public static void  startWorker(int workNum) {
+        _workers = new Worker[workNum];
         for(int i = 0; i < workNum; i++) {
-            workers[i].start();
+            _workers[i].start();
         }
-        return workers;
+    }
+
+    public static void stopWorkers() {
+        for(int i = 0; i < AuthStarter.workNum; i++) {
+            _workers[i]._stop = true;
+        }
     }
 }

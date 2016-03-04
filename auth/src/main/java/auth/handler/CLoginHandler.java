@@ -34,21 +34,20 @@ public class CLoginHandler extends IMHandler {
         Account account;
 
         if(!jedis.exists(UserUtils.genDBKey(userId))) {
-            RouteUtil.sendResponse(404, "Account not exists", _netid);
+            RouteUtil.sendResponse(404, "Account not exists", _netid, userId);
             logger.info("Account not exists, userid: {}", userId);
             return;
         } else {
             byte[] userIdBytes = jedis.hget(UserUtils.genDBKey(userId), UserUtils.userFileds.Account.field);
-            //todo 异常处理？？
             account = DBOperator.Deserialize(new Account(), userIdBytes);
         }
 
         if(account.getUserid().equals(userId) && account.getPasswd().equals(msg.getPasswd())) {
             ClientConnectionMap.registerUserid(userId, _netid);
-            RouteUtil.sendResponse(200, "Verify passed", _netid);
+            RouteUtil.sendResponse(200, "Verify passed", _netid, userId);
             logger.info("userid: {} verify passed", userId);
         } else {
-            RouteUtil.sendResponse(404, "Account not exist or passwd error", _netid);
+            RouteUtil.sendResponse(404, "Account not exist or passwd error", _netid, userId);
             logger.info("userid: {} verify failed", userId);
             return;
         }

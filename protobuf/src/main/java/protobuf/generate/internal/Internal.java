@@ -122,23 +122,38 @@ public final class Internal {
      */
     long getNetId();
 
-    // required uint32 ptoNum = 3;
+    // required string userId = 3;
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required string userId = 3;</code>
+     */
+    boolean hasUserId();
+    /**
+     * <code>required string userId = 3;</code>
+     */
+    java.lang.String getUserId();
+    /**
+     * <code>required string userId = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserIdBytes();
+
+    // required uint32 ptoNum = 4;
+    /**
+     * <code>required uint32 ptoNum = 4;</code>
      */
     boolean hasPtoNum();
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required uint32 ptoNum = 4;</code>
      */
     int getPtoNum();
 
-    // required bytes msg = 4;
+    // required bytes msg = 5;
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     boolean hasMsg();
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     com.google.protobuf.ByteString getMsg();
   }
@@ -209,13 +224,18 @@ public final class Internal {
               netId_ = input.readUInt64();
               break;
             }
-            case 24: {
+            case 26: {
               bitField0_ |= 0x00000004;
+              userId_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
               ptoNum_ = input.readUInt32();
               break;
             }
-            case 34: {
-              bitField0_ |= 0x00000008;
+            case 42: {
+              bitField0_ |= 0x00000010;
               msg_ = input.readBytes();
               break;
             }
@@ -291,33 +311,76 @@ public final class Internal {
       return netId_;
     }
 
-    // required uint32 ptoNum = 3;
-    public static final int PTONUM_FIELD_NUMBER = 3;
-    private int ptoNum_;
+    // required string userId = 3;
+    public static final int USERID_FIELD_NUMBER = 3;
+    private java.lang.Object userId_;
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required string userId = 3;</code>
      */
-    public boolean hasPtoNum() {
+    public boolean hasUserId() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required uint32 ptoNum = 3;</code>
+     * <code>required string userId = 3;</code>
+     */
+    public java.lang.String getUserId() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          userId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string userId = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required uint32 ptoNum = 4;
+    public static final int PTONUM_FIELD_NUMBER = 4;
+    private int ptoNum_;
+    /**
+     * <code>required uint32 ptoNum = 4;</code>
+     */
+    public boolean hasPtoNum() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required uint32 ptoNum = 4;</code>
      */
     public int getPtoNum() {
       return ptoNum_;
     }
 
-    // required bytes msg = 4;
-    public static final int MSG_FIELD_NUMBER = 4;
+    // required bytes msg = 5;
+    public static final int MSG_FIELD_NUMBER = 5;
     private com.google.protobuf.ByteString msg_;
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     public boolean hasMsg() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required bytes msg = 4;</code>
+     * <code>required bytes msg = 5;</code>
      */
     public com.google.protobuf.ByteString getMsg() {
       return msg_;
@@ -326,6 +389,7 @@ public final class Internal {
     private void initFields() {
       dest_ = protobuf.generate.internal.Internal.Dest.Client;
       netId_ = 0L;
+      userId_ = "";
       ptoNum_ = 0;
       msg_ = com.google.protobuf.ByteString.EMPTY;
     }
@@ -339,6 +403,10 @@ public final class Internal {
         return false;
       }
       if (!hasNetId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUserId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -364,10 +432,13 @@ public final class Internal {
         output.writeUInt64(2, netId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, ptoNum_);
+        output.writeBytes(3, getUserIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, msg_);
+        output.writeUInt32(4, ptoNum_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, msg_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -388,11 +459,15 @@ public final class Internal {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, ptoNum_);
+          .computeBytesSize(3, getUserIdBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, msg_);
+          .computeUInt32Size(4, ptoNum_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, msg_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -514,10 +589,12 @@ public final class Internal {
         bitField0_ = (bitField0_ & ~0x00000001);
         netId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        ptoNum_ = 0;
+        userId_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        msg_ = com.google.protobuf.ByteString.EMPTY;
+        ptoNum_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        msg_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -557,9 +634,13 @@ public final class Internal {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.ptoNum_ = ptoNum_;
+        result.userId_ = userId_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.ptoNum_ = ptoNum_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         result.msg_ = msg_;
         result.bitField0_ = to_bitField0_;
@@ -584,6 +665,11 @@ public final class Internal {
         if (other.hasNetId()) {
           setNetId(other.getNetId());
         }
+        if (other.hasUserId()) {
+          bitField0_ |= 0x00000004;
+          userId_ = other.userId_;
+          onChanged();
+        }
         if (other.hasPtoNum()) {
           setPtoNum(other.getPtoNum());
         }
@@ -600,6 +686,10 @@ public final class Internal {
           return false;
         }
         if (!hasNetId()) {
+          
+          return false;
+        }
+        if (!hasUserId()) {
           
           return false;
         }
@@ -702,70 +792,144 @@ public final class Internal {
         return this;
       }
 
-      // required uint32 ptoNum = 3;
-      private int ptoNum_ ;
+      // required string userId = 3;
+      private java.lang.Object userId_ = "";
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required string userId = 3;</code>
        */
-      public boolean hasPtoNum() {
+      public boolean hasUserId() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required string userId = 3;</code>
+       */
+      public java.lang.String getUserId() {
+        java.lang.Object ref = userId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          userId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string userId = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserIdBytes() {
+        java.lang.Object ref = userId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string userId = 3;</code>
+       */
+      public Builder setUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string userId = 3;</code>
+       */
+      public Builder clearUserId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        userId_ = getDefaultInstance().getUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string userId = 3;</code>
+       */
+      public Builder setUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 ptoNum = 4;
+      private int ptoNum_ ;
+      /**
+       * <code>required uint32 ptoNum = 4;</code>
+       */
+      public boolean hasPtoNum() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required uint32 ptoNum = 4;</code>
        */
       public int getPtoNum() {
         return ptoNum_;
       }
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required uint32 ptoNum = 4;</code>
        */
       public Builder setPtoNum(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         ptoNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 ptoNum = 3;</code>
+       * <code>required uint32 ptoNum = 4;</code>
        */
       public Builder clearPtoNum() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         ptoNum_ = 0;
         onChanged();
         return this;
       }
 
-      // required bytes msg = 4;
+      // required bytes msg = 5;
       private com.google.protobuf.ByteString msg_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public boolean hasMsg() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public com.google.protobuf.ByteString getMsg() {
         return msg_;
       }
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public Builder setMsg(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         msg_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bytes msg = 4;</code>
+       * <code>required bytes msg = 5;</code>
        */
       public Builder clearMsg() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         msg_ = getDefaultInstance().getMsg();
         onChanged();
         return this;
@@ -796,11 +960,12 @@ public final class Internal {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\033internal_def/internal.proto\"L\n\tGTransf" +
+      "\n\033internal_def/internal.proto\"\\\n\tGTransf" +
       "er\022\023\n\004dest\030\001 \002(\0162\005.Dest\022\r\n\005netId\030\002 \002(\004\022\016" +
-      "\n\006ptoNum\030\003 \002(\r\022\013\n\003msg\030\004 \002(\014*\'\n\004Dest\022\n\n\006C" +
-      "lient\020\001\022\010\n\004Auth\020\002\022\t\n\005Logic\020\003B&\n\032protobuf" +
-      ".generate.internalB\010Internal"
+      "\n\006userId\030\003 \002(\t\022\016\n\006ptoNum\030\004 \002(\r\022\013\n\003msg\030\005 " +
+      "\002(\014*\'\n\004Dest\022\n\n\006Client\020\001\022\010\n\004Auth\020\002\022\t\n\005Log" +
+      "ic\020\003B&\n\032protobuf.generate.internalB\010Inte" +
+      "rnal"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -812,7 +977,7 @@ public final class Internal {
           internal_static_GTransfer_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_GTransfer_descriptor,
-              new java.lang.String[] { "Dest", "NetId", "PtoNum", "Msg", });
+              new java.lang.String[] { "Dest", "NetId", "UserId", "PtoNum", "Msg", });
           return null;
         }
       };

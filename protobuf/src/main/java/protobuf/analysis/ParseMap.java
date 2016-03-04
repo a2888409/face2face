@@ -47,7 +47,12 @@ public class ParseMap {
         return msg;
     }
 
-    public static int getPtoNum(Message msg) {
-        return  ParseMap.msg2ptoNum.get(msg.getClass());
+    public static Integer getPtoNum(Message msg) {
+        return getPtoNum(msg.getClass());
     }
+
+    public static Integer getPtoNum(Class<?> clz) {
+        return msg2ptoNum.get(clz);
+    }
+
 }

@@ -1,14 +1,13 @@
 package auth.starter;
 
 import auth.AuthServer;
-import javafx.concurrent.Worker;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import thirdparty.redis.utils.*;
+import thirdparty.redis.utils.RedisPoolManager;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -56,7 +55,7 @@ public class AuthStarter {
             element = (Element)nodeList.item(0);
             int authListenPort = Integer.parseInt(element.getAttribute("port"));
             workNum = Integer.parseInt(element.getAttribute("workNum"));
-            workers = auth.Worker.startWorker(workNum);
+            auth.Worker.startWorker(workNum);
             logger.info("Authserver authListenPort " + authListenPort);
 
             xPathExpression  = xPath.compile("/auth/redis");

@@ -5,13 +5,11 @@ import auth.Worker;
 import auth.starter.AuthStarter;
 import auth.utils.RouteUtil;
 import com.google.protobuf.Message;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import protobuf.Utils;
 import protobuf.generate.cli2srv.login.Auth;
-import protobuf.generate.internal.Internal;
 import redis.clients.jedis.Jedis;
 import thirdparty.redis.utils.UserUtils;
 import thirdparty.thrift.generate.db.user.Account;
@@ -28,7 +26,7 @@ public class CRegisterHandler extends IMHandler {
     }
 
     @Override
-    protected void excute(Worker worker) {
+    protected void excute(Worker worker) throws TException {
         Auth.CRegister msg = (Auth.CRegister)_msg;
 
         String userid = msg.getUserid();
@@ -41,13 +39,12 @@ public class CRegisterHandler extends IMHandler {
         Jedis jedis = AuthStarter._redisPoolManager.getJedis();
 
         if (!jedis.exists(UserUtils.genDBKey(userid))) {
-            RouteUtil.sendResponse(404, "Account already exists", _netid);
+            RouteUtil.sendResponse(404, "Account already exists", _netid, userid);
             logger.info("Account already exists, userid: {}", userid);
             return;
         } else {
-            //todo 异常处理？？
-            //jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
-            RouteUtil.sendResponse(400, "User registerd successd",_netid);
+            jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
+            RouteUtil.sendResponse(400, "User registerd successd",_netid, userid);
             logger.info("User registerd successd, userid: {}", userid);
         }
     }

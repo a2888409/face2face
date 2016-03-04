@@ -10,12 +10,13 @@ import protobuf.generate.internal.Internal;
  * Created by Dell on 2016/2/23.
  */
 public class Utils {
-    public static ByteBuf pack2Server(Message msg, int ptoNum, long netId, Internal.Dest dest) {
+    public static ByteBuf pack2Server(Message msg, int ptoNum, long netId, Internal.Dest dest, String userId) {
         Internal.GTransfer.Builder gtf = Internal.GTransfer.newBuilder();
         gtf.setPtoNum(ptoNum);
         gtf.setMsg(msg.toByteString());
         gtf.setNetId(netId);
         gtf.setDest(dest);
+        gtf.setUserId(userId);
 
         byte[] bytes = gtf.build().toByteArray();
         int length =bytes.length;

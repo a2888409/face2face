@@ -61,14 +61,14 @@ public class ClientMessage {
         ByteBuf byteBuf = null;
         if(msg instanceof Chat.CPrivateChat) {
             long dest_netid = ClientConnectionMap.userid2netid(conn.getUserId()); //目标的netid
-            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), dest_netid, Internal.Dest.Logic);
+            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), dest_netid, Internal.Dest.Logic, conn.getUserId());
         }
 
         GateLogicConnectionHandler.getGatelogicConnection().writeAndFlush(byteBuf);
     }
 
     public static void transfer2Auth(Message msg, ClientConnection conn) {
-        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Auth);
+        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Auth, conn.getUserId());
 
         GateAuthConnectionHandler.getGateAuthConnection().writeAndFlush(byteBuf);
 
