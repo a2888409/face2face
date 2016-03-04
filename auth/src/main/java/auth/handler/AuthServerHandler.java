@@ -33,12 +33,10 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
         Internal.GTransfer gt = (Internal.GTransfer) message;
         int ptoNum = gt.getPtoNum();
-        long netId = gt.getNetId();
         Message msg = ParseMap.getMessage(ptoNum, gt.getMsg().toByteArray());
-        String userId = gt.getUserId();
 
-        IMHandler handler = HandlerManager.getHandler(ptoNum, userId, netId, msg, getGateAuthConnection());
-        Worker.dispatch(userId, handler);
+        IMHandler handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, getGateAuthConnection());
+        Worker.dispatch(gt.getUserId(), handler);
     }
 
 
