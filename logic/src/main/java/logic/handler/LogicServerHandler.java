@@ -21,6 +21,8 @@ public class LogicServerHandler extends SimpleChannelInboundHandler<Message> {
     private static ChannelHandlerContext _gateLogicConnection;
     private static ChannelHandlerContext _authLogicConnection;
 
+
+
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
         Internal.GTransfer gt = (Internal.GTransfer) message;
@@ -29,7 +31,7 @@ public class LogicServerHandler extends SimpleChannelInboundHandler<Message> {
 
         IMHandler handler;
         if(msg instanceof Internal.Greet) {
-            handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, getAuthLogicConnection());
+            handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, channelHandlerContext);
         } else {
             handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, getGateLogicConnection());
         }

@@ -39,7 +39,7 @@ public class ClientConnectionMap {
     }
 
     public static void addClientConnection(ChannelHandlerContext c) {
-        //TODO 稍后加入断线处理
+        //fixme 之后重复登录需要踢掉原来的连接
         ClientConnection conn = new ClientConnection(c);
 
         if(ClientConnectionMap.allClientMap.putIfAbsent(conn.getNetId(), conn) != null) {

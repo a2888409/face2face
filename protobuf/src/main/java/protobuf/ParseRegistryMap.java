@@ -18,6 +18,7 @@ public class ParseRegistryMap {
     public static final int CREGISTER = 1001;
     public static final int SRESPONSE = 1002;
     public static final int CPRIVATECHAT = 1003;
+    public static final int SPRIVATECHAT = 1004;
 
 
     public static void initRegistry() throws IOException {
@@ -28,5 +29,6 @@ public class ParseRegistryMap {
         ParseMap.register(1001, Auth.CRegister::parseFrom, Auth.CRegister.class);
         ParseMap.register(1002, Auth.SResponse::parseFrom, Auth.SResponse.class);
         ParseMap.register(1003, Chat.CPrivateChat::parseFrom, Chat.CPrivateChat.class);
+        ParseMap.register(1004, Chat.SPrivateChat::parseFrom, Chat.SPrivateChat.class);
     }
 }

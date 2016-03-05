@@ -1,5 +1,6 @@
 package auth.handler;
 
+import auth.utils.Common;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import protobuf.ParseRegistryMap;
 import protobuf.Utils;
 import protobuf.generate.cli2srv.chat.Chat;
-import protobuf.generate.cli2srv.login.Auth;
 import protobuf.generate.internal.Internal;
 
 /**
@@ -31,10 +31,14 @@ public class CPrivateChatHandler extends IMHandler{
 
         String dest = msg.getDest();
         Long netid = AuthServerHandler.getNetidByUserid(dest);
+        if(netid == null) {
+            logger.error("Dest User not online");
+            return;
+        }
 
         Chat.SPrivateChat.Builder sp = Chat.SPrivateChat.newBuilder();
         sp.setContent(msg.getContent());
-        byteBuf = Utils.pack2Server(sp.build(), ParseRegistryMap.CPRIVATECHAT, netid, Internal.Dest.Gate, dest);
+        byteBuf = Utils.pack2Server(sp.build(), ParseRegistryMap.SPRIVATECHAT, netid, Internal.Dest.Gate, dest);
         _ctx.writeAndFlush(byteBuf);
 
         logger.info("message has send from {} to {}", msg.getSelf(), msg.getDest());

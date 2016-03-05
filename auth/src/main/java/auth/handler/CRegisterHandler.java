@@ -3,6 +3,7 @@ package auth.handler;
 import auth.IMHandler;
 import auth.Worker;
 import auth.starter.AuthStarter;
+import auth.utils.Common;
 import auth.utils.RouteUtil;
 import com.google.protobuf.Message;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.generate.cli2srv.login.Auth;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Protocol;
 import thirdparty.redis.utils.UserUtils;
 import thirdparty.thrift.generate.db.user.Account;
 import thirdparty.thrift.utils.DBOperator;
@@ -39,12 +41,12 @@ public class CRegisterHandler extends IMHandler {
         Jedis jedis = AuthStarter._redisPoolManager.getJedis();
 
         if (jedis.exists(UserUtils.genDBKey(userid))) {
-            RouteUtil.sendResponse(300, "Account already exists", _netid, userid);
+            RouteUtil.sendResponse(Common.ACCOUNT_DUMPLICATED, "Account already exists", _netid, userid);
             logger.info("Account already exists, userid: {}", userid);
             return;
         } else {
             jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
-            RouteUtil.sendResponse(400, "User registerd successd",_netid, userid);
+            RouteUtil.sendResponse(Common.REGISTER_OK, "User registerd successd",_netid, userid);
             logger.info("User registerd successd, userid: {}", userid);
         }
     }

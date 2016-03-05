@@ -20,9 +20,10 @@ public class Worker extends Thread {
 
     public static void dispatch(String userId, IMHandler handler) {
         int workId = getWorkId(userId);
-        if(handler == null)
+        if(handler == null) {
             logger.error("handler is null");
-
+            return;
+        }
         _workers[workId]._tasks.offer(handler);
     }
 

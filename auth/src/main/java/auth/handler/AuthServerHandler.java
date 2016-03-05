@@ -47,11 +47,13 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
         Message msg = ParseMap.getMessage(ptoNum, gt.getMsg().toByteArray());
 
         IMHandler handler;
-        if(msg instanceof Chat.CPrivateChat) {
-            handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), -1L, msg, getGateAuthConnection());
+        if(msg instanceof Internal.Greet) {
+            //来自gate的连接请求
+            handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, channelHandlerContext);
         } else {
             handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, getGateAuthConnection());
         }
+
         Worker.dispatch(gt.getUserId(), handler);
     }
 

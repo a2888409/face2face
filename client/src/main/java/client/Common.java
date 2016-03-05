@@ -1,8 +1,5 @@
-package auth.utils;
+package client;
 
-/**
- * Created by Dell on 2016/2/22.
- */
 public class Common {
     //注册相关
     public static final int ACCOUNT_DUMPLICATED = 100;
@@ -14,5 +11,5 @@ public class Common {
     public static final int VERYFY_ERROR= 202;
 
     //聊天相关
-    public static final int Received_Message= 300;
+    public static final int Msg_SendSuccess= 300;
 }

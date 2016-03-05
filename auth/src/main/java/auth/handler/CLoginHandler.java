@@ -3,6 +3,7 @@ package auth.handler;
 import auth.IMHandler;
 import auth.Worker;
 import auth.starter.AuthStarter;
+import auth.utils.Common;
 import auth.utils.RouteUtil;
 import com.google.protobuf.Message;
 import io.netty.channel.ChannelHandlerContext;
@@ -32,7 +33,7 @@ public class CLoginHandler extends IMHandler {
         Account account;
 
         if(!jedis.exists(UserUtils.genDBKey(_userid))) {
-            RouteUtil.sendResponse(404, "Account not exists", _netid, _userid);
+            RouteUtil.sendResponse(Common.ACCOUNT_INEXIST, "Account not exists", _netid, _userid);
             logger.info("Account not exists, userid: {}", _userid);
             return;
         } else {
@@ -42,10 +43,10 @@ public class CLoginHandler extends IMHandler {
 
         if(account.getUserid().equals(_userid) && account.getPasswd().equals(msg.getPasswd())) {
             AuthServerHandler.putInUseridMap(_userid, _netid);
-            RouteUtil.sendResponse(200, "Verify passed", _netid, _userid);
+            RouteUtil.sendResponse(Common.VERYFY_PASSED, "Verify passed", _netid, _userid);
             logger.info("userid: {} verify passed", _userid);
         } else {
-            RouteUtil.sendResponse(404, "Account not exist or passwd error", _netid, _userid);
+            RouteUtil.sendResponse(Common.VERYFY_ERROR, "Account not exist or passwd error", _netid, _userid);
             logger.info("userid: {} verify failed", _userid);
             return;
         }

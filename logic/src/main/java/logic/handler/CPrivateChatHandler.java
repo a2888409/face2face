@@ -30,12 +30,12 @@ public class CPrivateChatHandler extends IMHandler{
         ByteBuf byteBuf = null;
 
         //转发给auth
-        byteBuf = Utils.pack2Server(_msg, ParseRegistryMap.CREGISTER, Internal.Dest.Auth, msg.getDest());
+        byteBuf = Utils.pack2Server(_msg, ParseRegistryMap.CPRIVATECHAT, Internal.Dest.Auth, msg.getDest());
         LogicServerHandler.getAuthLogicConnection().writeAndFlush(byteBuf);
 
         //给发消息的人回应
         Auth.SResponse.Builder sr = Auth.SResponse.newBuilder();
-        sr.setCode(200);
+        sr.setCode(300);
         sr.setDesc("Server received message successed");
         byteBuf = Utils.pack2Client(sr.build());
         _ctx.writeAndFlush(byteBuf);
