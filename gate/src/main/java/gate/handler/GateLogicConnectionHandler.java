@@ -1,10 +1,13 @@
 package gate.handler;
 
 import com.google.protobuf.Message;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import protobuf.Utils;
+import protobuf.generate.internal.Internal;
 
 /**
  * Created by Dell on 2016/2/2.
@@ -21,9 +24,20 @@ public class GateLogicConnectionHandler extends SimpleChannelInboundHandler<Mess
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         _gateLogicConnection = ctx;
         logger.info("[Gate-Logic] connection is established");
+
+        //向logic发送Greet
+        sendGreet2Logic();
     }
     @Override
         protected void channelRead0(ChannelHandlerContext channelHandlerContext, Message message) throws Exception {
 
+    }
+
+    private void sendGreet2Logic() {
+        Internal.Greet.Builder ig = Internal.Greet.newBuilder();
+        ig.setFrom(Internal.Greet.From.Gate);
+        ByteBuf out = Utils.pack2Server(ig.build(), 901, -1, Internal.Dest.Logic, "admin");
+        getGatelogicConnection().writeAndFlush(out);
+        logger.info("Gate send Green to Logic.");
     }
 }

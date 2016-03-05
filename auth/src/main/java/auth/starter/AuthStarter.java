@@ -75,15 +75,9 @@ public class AuthStarter {
             String logicIp = element.getAttribute("ip");
             int logicPort = Integer.parseInt(element.getAttribute("port"));
 
-
-            //start workers
-            workNum = Integer.parseInt(element.getAttribute("workNum"));
-            auth.Worker.startWorker(workNum);
-
-            logger.info("Authserver authListenPort " + authListenPort);
-
             //Now Start Servers
             new Thread(() -> AuthServer.startAuthServer(authListenPort)).start();
+
             new Thread(() -> AuthLogicConnection.startAuthLogicConnection(logicIp, logicPort)).start();
 
         } catch (Exception e) {

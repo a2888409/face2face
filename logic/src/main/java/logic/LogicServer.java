@@ -5,12 +5,14 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import logic.handler.GreetHandler;
 import logic.handler.LogicServerHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
+import protobuf.generate.internal.Internal;
 
 import java.net.InetSocketAddress;
 
@@ -46,6 +48,7 @@ public class LogicServer {
                     throws Exception {
                 if (future.isSuccess()) {
                     ParseRegistryMap.initRegistry();
+                    initHandlers();
                     logger.info("[LogicServer] Started Successed, waiting for other server connect...");
                 } else {
                     logger.error("[LogicServer] Started Failed");}
@@ -60,6 +63,9 @@ public class LogicServer {
 
         bootstrap.childOption(ChannelOption.SO_REUSEADDR, true); //调试用
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true); //心跳机制暂时使用TCP选项，之后再自己实现
+    }
 
+    private static void initHandlers() {
+        HandlerManager.register(Internal.Greet.class, GreetHandler.class);
     }
 }

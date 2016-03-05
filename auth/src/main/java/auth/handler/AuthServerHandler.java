@@ -21,16 +21,22 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
     private static final Logger logger = LoggerFactory.getLogger(AuthServerHandler.class);
     private static ChannelHandlerContext _gateAuthConnection;
 
+    public static void setGateAuthConnection(ChannelHandlerContext ctx) {
+        _gateAuthConnection = ctx;
+    }
+
     public static ChannelHandlerContext getGateAuthConnection() {
-        return _gateAuthConnection;
+        if(_gateAuthConnection != null) {
+            return _gateAuthConnection;
+        } else {
+            return null;
+        }
     }
 
     private static HashMap<String, Long> userid2netidMap = new HashMap<>();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        _gateAuthConnection = ctx;
-        logger.info("[Gate-Auth] connection is established");
     }
 
     @Override

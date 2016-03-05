@@ -17,6 +17,12 @@ message GTransfer {
 }
 
 //服务间建立连接时发送的协议
-message CGreet {
+message Greet {
+    enum From {
+        Logic = 1;
+        Gate  = 2;
+        Auth  = 3;
+    }
+    required From from = 1;
 }
 

@@ -32,6 +32,7 @@ public class LogicStarter {
     private static File cfg = null;
     private static File log = null;
     public static RedisPoolManager _redisPoolManager;
+    public static int workNum = 1;
 
     public static void main(String[] args) throws Exception {
 
@@ -60,6 +61,8 @@ public class LogicStarter {
             element = (Element)nodeList.item(0);
             int logicListenPort = Integer.parseInt(element.getAttribute("port"));
             logger.info("Logicserver logicListenPort " + logicListenPort);
+            workNum = Integer.parseInt(element.getAttribute("workNum"));
+            logic.Worker.startWorker(workNum);
 
             xPathExpression  = xPath.compile("/logic/redis");
             nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);

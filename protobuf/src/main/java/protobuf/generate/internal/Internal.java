@@ -946,32 +946,42 @@ public final class Internal {
     // @@protoc_insertion_point(class_scope:GTransfer)
   }
 
-  public interface CGreetOrBuilder
+  public interface GreetOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required .Greet.From from = 1;
+    /**
+     * <code>required .Greet.From from = 1;</code>
+     */
+    boolean hasFrom();
+    /**
+     * <code>required .Greet.From from = 1;</code>
+     */
+    protobuf.generate.internal.Internal.Greet.From getFrom();
   }
   /**
-   * Protobuf type {@code CGreet}
+   * Protobuf type {@code Greet}
    *
    * <pre>
    *服务间建立连接时发送的协议
    * </pre>
    */
-  public static final class CGreet extends
+  public static final class Greet extends
       com.google.protobuf.GeneratedMessage
-      implements CGreetOrBuilder {
-    // Use CGreet.newBuilder() to construct.
-    private CGreet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GreetOrBuilder {
+    // Use Greet.newBuilder() to construct.
+    private Greet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private CGreet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private Greet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final CGreet defaultInstance;
-    public static CGreet getDefaultInstance() {
+    private static final Greet defaultInstance;
+    public static Greet getDefaultInstance() {
       return defaultInstance;
     }
 
-    public CGreet getDefaultInstanceForType() {
+    public Greet getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -981,11 +991,12 @@ public final class Internal {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private CGreet(
+    private Greet(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1003,6 +1014,17 @@ public final class Internal {
               }
               break;
             }
+            case 8: {
+              int rawValue = input.readEnum();
+              protobuf.generate.internal.Internal.Greet.From value = protobuf.generate.internal.Internal.Greet.From.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                from_ = value;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1017,38 +1039,151 @@ public final class Internal {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return protobuf.generate.internal.Internal.internal_static_CGreet_descriptor;
+      return protobuf.generate.internal.Internal.internal_static_Greet_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return protobuf.generate.internal.Internal.internal_static_CGreet_fieldAccessorTable
+      return protobuf.generate.internal.Internal.internal_static_Greet_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              protobuf.generate.internal.Internal.CGreet.class, protobuf.generate.internal.Internal.CGreet.Builder.class);
+              protobuf.generate.internal.Internal.Greet.class, protobuf.generate.internal.Internal.Greet.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<CGreet> PARSER =
-        new com.google.protobuf.AbstractParser<CGreet>() {
-      public CGreet parsePartialFrom(
+    public static com.google.protobuf.Parser<Greet> PARSER =
+        new com.google.protobuf.AbstractParser<Greet>() {
+      public Greet parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CGreet(input, extensionRegistry);
+        return new Greet(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CGreet> getParserForType() {
+    public com.google.protobuf.Parser<Greet> getParserForType() {
       return PARSER;
     }
 
+    /**
+     * Protobuf enum {@code Greet.From}
+     */
+    public enum From
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>Logic = 1;</code>
+       */
+      Logic(0, 1),
+      /**
+       * <code>Gate = 2;</code>
+       */
+      Gate(1, 2),
+      /**
+       * <code>Auth = 3;</code>
+       */
+      Auth(2, 3),
+      ;
+
+      /**
+       * <code>Logic = 1;</code>
+       */
+      public static final int Logic_VALUE = 1;
+      /**
+       * <code>Gate = 2;</code>
+       */
+      public static final int Gate_VALUE = 2;
+      /**
+       * <code>Auth = 3;</code>
+       */
+      public static final int Auth_VALUE = 3;
+
+
+      public final int getNumber() { return value; }
+
+      public static From valueOf(int value) {
+        switch (value) {
+          case 1: return Logic;
+          case 2: return Gate;
+          case 3: return Auth;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<From>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<From>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<From>() {
+              public From findValueByNumber(int number) {
+                return From.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return protobuf.generate.internal.Internal.Greet.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final From[] VALUES = values();
+
+      public static From valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private From(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:Greet.From)
+    }
+
+    private int bitField0_;
+    // required .Greet.From from = 1;
+    public static final int FROM_FIELD_NUMBER = 1;
+    private protobuf.generate.internal.Internal.Greet.From from_;
+    /**
+     * <code>required .Greet.From from = 1;</code>
+     */
+    public boolean hasFrom() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .Greet.From from = 1;</code>
+     */
+    public protobuf.generate.internal.Internal.Greet.From getFrom() {
+      return from_;
+    }
+
     private void initFields() {
+      from_ = protobuf.generate.internal.Internal.Greet.From.Logic;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasFrom()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1056,6 +1191,9 @@ public final class Internal {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, from_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1065,6 +1203,10 @@ public final class Internal {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, from_.getNumber());
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -1077,53 +1219,53 @@ public final class Internal {
       return super.writeReplace();
     }
 
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(
+    public static protobuf.generate.internal.Internal.Greet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(
+    public static protobuf.generate.internal.Internal.Greet parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(byte[] data)
+    public static protobuf.generate.internal.Internal.Greet parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(
+    public static protobuf.generate.internal.Internal.Greet parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(java.io.InputStream input)
+    public static protobuf.generate.internal.Internal.Greet parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(
+    public static protobuf.generate.internal.Internal.Greet parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseDelimitedFrom(java.io.InputStream input)
+    public static protobuf.generate.internal.Internal.Greet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseDelimitedFrom(
+    public static protobuf.generate.internal.Internal.Greet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(
+    public static protobuf.generate.internal.Internal.Greet parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static protobuf.generate.internal.Internal.CGreet parseFrom(
+    public static protobuf.generate.internal.Internal.Greet parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1132,7 +1274,7 @@ public final class Internal {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(protobuf.generate.internal.Internal.CGreet prototype) {
+    public static Builder newBuilder(protobuf.generate.internal.Internal.Greet prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1144,7 +1286,7 @@ public final class Internal {
       return builder;
     }
     /**
-     * Protobuf type {@code CGreet}
+     * Protobuf type {@code Greet}
      *
      * <pre>
      *服务间建立连接时发送的协议
@@ -1152,20 +1294,20 @@ public final class Internal {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements protobuf.generate.internal.Internal.CGreetOrBuilder {
+       implements protobuf.generate.internal.Internal.GreetOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return protobuf.generate.internal.Internal.internal_static_CGreet_descriptor;
+        return protobuf.generate.internal.Internal.internal_static_Greet_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return protobuf.generate.internal.Internal.internal_static_CGreet_fieldAccessorTable
+        return protobuf.generate.internal.Internal.internal_static_Greet_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                protobuf.generate.internal.Internal.CGreet.class, protobuf.generate.internal.Internal.CGreet.Builder.class);
+                protobuf.generate.internal.Internal.Greet.class, protobuf.generate.internal.Internal.Greet.Builder.class);
       }
 
-      // Construct using protobuf.generate.internal.Internal.CGreet.newBuilder()
+      // Construct using protobuf.generate.internal.Internal.Greet.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1185,6 +1327,8 @@ public final class Internal {
 
       public Builder clear() {
         super.clear();
+        from_ = protobuf.generate.internal.Internal.Greet.From.Logic;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -1194,43 +1338,57 @@ public final class Internal {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return protobuf.generate.internal.Internal.internal_static_CGreet_descriptor;
+        return protobuf.generate.internal.Internal.internal_static_Greet_descriptor;
       }
 
-      public protobuf.generate.internal.Internal.CGreet getDefaultInstanceForType() {
-        return protobuf.generate.internal.Internal.CGreet.getDefaultInstance();
+      public protobuf.generate.internal.Internal.Greet getDefaultInstanceForType() {
+        return protobuf.generate.internal.Internal.Greet.getDefaultInstance();
       }
 
-      public protobuf.generate.internal.Internal.CGreet build() {
-        protobuf.generate.internal.Internal.CGreet result = buildPartial();
+      public protobuf.generate.internal.Internal.Greet build() {
+        protobuf.generate.internal.Internal.Greet result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public protobuf.generate.internal.Internal.CGreet buildPartial() {
-        protobuf.generate.internal.Internal.CGreet result = new protobuf.generate.internal.Internal.CGreet(this);
+      public protobuf.generate.internal.Internal.Greet buildPartial() {
+        protobuf.generate.internal.Internal.Greet result = new protobuf.generate.internal.Internal.Greet(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.from_ = from_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof protobuf.generate.internal.Internal.CGreet) {
-          return mergeFrom((protobuf.generate.internal.Internal.CGreet)other);
+        if (other instanceof protobuf.generate.internal.Internal.Greet) {
+          return mergeFrom((protobuf.generate.internal.Internal.Greet)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(protobuf.generate.internal.Internal.CGreet other) {
-        if (other == protobuf.generate.internal.Internal.CGreet.getDefaultInstance()) return this;
+      public Builder mergeFrom(protobuf.generate.internal.Internal.Greet other) {
+        if (other == protobuf.generate.internal.Internal.Greet.getDefaultInstance()) return this;
+        if (other.hasFrom()) {
+          setFrom(other.getFrom());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasFrom()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -1238,11 +1396,11 @@ public final class Internal {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        protobuf.generate.internal.Internal.CGreet parsedMessage = null;
+        protobuf.generate.internal.Internal.Greet parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (protobuf.generate.internal.Internal.CGreet) e.getUnfinishedMessage();
+          parsedMessage = (protobuf.generate.internal.Internal.Greet) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1251,16 +1409,53 @@ public final class Internal {
         }
         return this;
       }
+      private int bitField0_;
 
-      // @@protoc_insertion_point(builder_scope:CGreet)
+      // required .Greet.From from = 1;
+      private protobuf.generate.internal.Internal.Greet.From from_ = protobuf.generate.internal.Internal.Greet.From.Logic;
+      /**
+       * <code>required .Greet.From from = 1;</code>
+       */
+      public boolean hasFrom() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .Greet.From from = 1;</code>
+       */
+      public protobuf.generate.internal.Internal.Greet.From getFrom() {
+        return from_;
+      }
+      /**
+       * <code>required .Greet.From from = 1;</code>
+       */
+      public Builder setFrom(protobuf.generate.internal.Internal.Greet.From value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        from_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .Greet.From from = 1;</code>
+       */
+      public Builder clearFrom() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        from_ = protobuf.generate.internal.Internal.Greet.From.Logic;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Greet)
     }
 
     static {
-      defaultInstance = new CGreet(true);
+      defaultInstance = new Greet(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:CGreet)
+    // @@protoc_insertion_point(class_scope:Greet)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -1269,10 +1464,10 @@ public final class Internal {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_GTransfer_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_CGreet_descriptor;
+    internal_static_Greet_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_CGreet_fieldAccessorTable;
+      internal_static_Greet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1285,9 +1480,10 @@ public final class Internal {
       "\n\033internal_def/internal.proto\"\\\n\tGTransf" +
       "er\022\023\n\004dest\030\001 \002(\0162\005.Dest\022\r\n\005netId\030\002 \001(\004\022\016" +
       "\n\006userId\030\003 \002(\t\022\016\n\006ptoNum\030\004 \002(\r\022\013\n\003msg\030\005 " +
-      "\002(\014\"\010\n\006CGreet*\'\n\004Dest\022\n\n\006Client\020\001\022\010\n\004Aut" +
-      "h\020\002\022\t\n\005Logic\020\003B&\n\032protobuf.generate.inte" +
-      "rnalB\010Internal"
+      "\002(\014\"I\n\005Greet\022\031\n\004from\030\001 \002(\0162\013.Greet.From\"" +
+      "%\n\004From\022\t\n\005Logic\020\001\022\010\n\004Gate\020\002\022\010\n\004Auth\020\003*\'" +
+      "\n\004Dest\022\n\n\006Client\020\001\022\010\n\004Auth\020\002\022\t\n\005Logic\020\003B" +
+      "&\n\032protobuf.generate.internalB\010Internal"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1300,12 +1496,12 @@ public final class Internal {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_GTransfer_descriptor,
               new java.lang.String[] { "Dest", "NetId", "UserId", "PtoNum", "Msg", });
-          internal_static_CGreet_descriptor =
+          internal_static_Greet_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_CGreet_fieldAccessorTable = new
+          internal_static_Greet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_CGreet_descriptor,
-              new java.lang.String[] { });
+              internal_static_Greet_descriptor,
+              new java.lang.String[] { "From", });
           return null;
         }
       };

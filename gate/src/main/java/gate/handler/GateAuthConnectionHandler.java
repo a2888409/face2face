@@ -25,6 +25,8 @@ public class GateAuthConnectionHandler extends SimpleChannelInboundHandler<Messa
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         _gateAuthConnection = ctx;
         logger.info("[Gate-Auth] connection is established");
+
+        sendGreet2Auth();
     }
 
     @Override
@@ -36,5 +38,14 @@ public class GateAuthConnectionHandler extends SimpleChannelInboundHandler<Messa
         ByteBuf out = Utils.pack2Client(cmd);
 
         ClientConnectionMap.getClientConnection(gtf.getNetId()).getCtx().writeAndFlush(out);
+    }
+
+    private void sendGreet2Auth() {
+        //向auth送Greet协议
+        Internal.Greet.Builder ig = Internal.Greet.newBuilder();
+        ig.setFrom(Internal.Greet.From.Gate);
+        ByteBuf out = Utils.pack2Server(ig.build(), 901, -1, Internal.Dest.Auth, "admin");
+        getGateAuthConnection().writeAndFlush(out);
+        logger.info("Gate send Green to Auth.");
     }
 }

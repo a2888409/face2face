@@ -16,6 +16,7 @@ import protobuf.ParseRegistryMap;
 import protobuf.code.PacketDecoder;
 import protobuf.code.PacketEncoder;
 import protobuf.generate.cli2srv.login.Auth;
+import protobuf.generate.internal.Internal;
 
 import java.net.InetSocketAddress;
 
@@ -75,5 +76,6 @@ public class AuthServer {
     private static void initHandlers() {
         HandlerManager.register(Auth.CLogin.class, CLoginHandler.class);
         HandlerManager.register(Auth.CRegister.class, CRegisterHandler.class);
+        HandlerManager.register(Internal.Greet.class, GreetHandler.class);
     }
 }
