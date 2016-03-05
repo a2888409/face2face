@@ -25,6 +25,10 @@ public final class Internal {
      * <code>Logic = 3;</code>
      */
     Logic(2, 3),
+    /**
+     * <code>Gate = 4;</code>
+     */
+    Gate(3, 4),
     ;
 
     /**
@@ -39,6 +43,10 @@ public final class Internal {
      * <code>Logic = 3;</code>
      */
     public static final int Logic_VALUE = 3;
+    /**
+     * <code>Gate = 4;</code>
+     */
+    public static final int Gate_VALUE = 4;
 
 
     public final int getNumber() { return value; }
@@ -48,6 +56,7 @@ public final class Internal {
         case 1: return Client;
         case 2: return Auth;
         case 3: return Logic;
+        case 4: return Gate;
         default: return null;
       }
     }
@@ -1481,9 +1490,10 @@ public final class Internal {
       "er\022\023\n\004dest\030\001 \002(\0162\005.Dest\022\r\n\005netId\030\002 \001(\004\022\016" +
       "\n\006userId\030\003 \002(\t\022\016\n\006ptoNum\030\004 \002(\r\022\013\n\003msg\030\005 " +
       "\002(\014\"I\n\005Greet\022\031\n\004from\030\001 \002(\0162\013.Greet.From\"" +
-      "%\n\004From\022\t\n\005Logic\020\001\022\010\n\004Gate\020\002\022\010\n\004Auth\020\003*\'" +
-      "\n\004Dest\022\n\n\006Client\020\001\022\010\n\004Auth\020\002\022\t\n\005Logic\020\003B" +
-      "&\n\032protobuf.generate.internalB\010Internal"
+      "%\n\004From\022\t\n\005Logic\020\001\022\010\n\004Gate\020\002\022\010\n\004Auth\020\003*1" +
+      "\n\004Dest\022\n\n\006Client\020\001\022\010\n\004Auth\020\002\022\t\n\005Logic\020\003\022" +
+      "\010\n\004Gate\020\004B&\n\032protobuf.generate.internalB" +
+      "\010Internal"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

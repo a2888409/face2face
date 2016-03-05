@@ -7,6 +7,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import protobuf.ParseRegistryMap;
 import protobuf.Utils;
 import protobuf.analysis.ParseMap;
 import protobuf.generate.internal.Internal;
@@ -44,7 +45,7 @@ public class GateAuthConnectionHandler extends SimpleChannelInboundHandler<Messa
         //向auth送Greet协议
         Internal.Greet.Builder ig = Internal.Greet.newBuilder();
         ig.setFrom(Internal.Greet.From.Gate);
-        ByteBuf out = Utils.pack2Server(ig.build(), 901, -1, Internal.Dest.Auth, "admin");
+        ByteBuf out = Utils.pack2Server(ig.build(), ParseRegistryMap.GREET, -1, Internal.Dest.Auth, "admin");
         getGateAuthConnection().writeAndFlush(out);
         logger.info("Gate send Green to Auth.");
     }

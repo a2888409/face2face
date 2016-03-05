@@ -53,7 +53,7 @@ public class AuthServer {
                 if (future.isSuccess()) {
                     //init registry
                     ParseRegistryMap.initRegistry();
-                    initHandlers();
+                    HandlerManager.initHandlers();
                     logger.info("[AuthServer] Started Successed, waiting for other server connect...");
                 } else {
                     logger.error("[AuthServer] Started Failed");
@@ -71,11 +71,5 @@ public class AuthServer {
         bootstrap.childOption(ChannelOption.SO_REUSEADDR, true); //调试用
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true); //心跳机制暂时使用TCP选项，之后再自己实现
 
-    }
-
-    private static void initHandlers() {
-        HandlerManager.register(Auth.CLogin.class, CLoginHandler.class);
-        HandlerManager.register(Auth.CRegister.class, CRegisterHandler.class);
-        HandlerManager.register(Internal.Greet.class, GreetHandler.class);
     }
 }

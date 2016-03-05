@@ -6,3 +6,7 @@ message CPrivateChat {
 	required string dest = 2;       //消息目标的userid
 	required string content = 3;    //消息内容
 }
+
+message SPrivateChat {
+    required  string content = 1;
+}

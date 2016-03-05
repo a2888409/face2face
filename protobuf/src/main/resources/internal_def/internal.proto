@@ -5,6 +5,7 @@ enum Dest {
     Client = 1;
     Auth = 2;
     Logic = 3;
+    Gate = 4;
 }
 
 //服务间的中转协议

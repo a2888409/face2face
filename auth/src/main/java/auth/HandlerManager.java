@@ -1,10 +1,15 @@
 package auth;
 
+
+import auth.handler.*;
 import com.google.protobuf.Message;
 import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.analysis.ParseMap;
+import protobuf.generate.cli2srv.chat.Chat;
+import protobuf.generate.cli2srv.login.Auth;
+import protobuf.generate.internal.Internal;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -40,5 +45,13 @@ public class HandlerManager {
         }
 
         return constructor.newInstance(userId, netId, msg, ctx);
+    }
+
+    public static void initHandlers() {
+        HandlerManager.register(Internal.Greet.class, GreetHandler.class);
+        HandlerManager.register(Auth.CLogin.class, CLoginHandler.class);
+        HandlerManager.register(Auth.CRegister.class, CRegisterHandler.class);
+        HandlerManager.register(Chat.CPrivateChat.class, CPrivateChatHandler.class);
+
     }
 }

@@ -13,6 +13,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.analysis.ParseMap;
+import protobuf.generate.cli2srv.chat.Chat;
 import protobuf.generate.internal.Internal;
 
 import java.util.HashMap;
@@ -45,7 +46,12 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
         int ptoNum = gt.getPtoNum();
         Message msg = ParseMap.getMessage(ptoNum, gt.getMsg().toByteArray());
 
-        IMHandler handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, getGateAuthConnection());
+        IMHandler handler;
+        if(msg instanceof Chat.CPrivateChat) {
+            handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), -1L, msg, getGateAuthConnection());
+        } else {
+            handler = HandlerManager.getHandler(ptoNum, gt.getUserId(), gt.getNetId(), msg, getGateAuthConnection());
+        }
         Worker.dispatch(gt.getUserId(), handler);
     }
 
@@ -58,5 +64,14 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
 
     public static void putInUseridMap(String userid, Long netId) {
         userid2netidMap.put(userid, netId);
+    }
+
+    public static Long getNetidByUserid(String userid) {
+        Long netid = userid2netidMap.get(userid);
+        if( netid != null) {
+            return netid;
+        } else {
+            return null;
+        }
     }
 }
