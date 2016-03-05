@@ -9,7 +9,7 @@ logic服务：负责处理各种业务逻辑。<br>
 windows:<br>
 1、使用intellij maven方式导入该工程，执行mvn clean compile<br>
 2、启动本地redis服务:使用windows cmd命令行进入到thirdparty模块resources目录下的redis文件夹，执行redis-server.exe redis.windows.conf<br>
-3、按照提示，设置好auth logic gate正确的配置文件路径，依次启动auth、logic、auth服务<br>
+3、按照提示，设置好auth logic gate正确的配置文件路径，依次启动auth、logic、gate服务<br>
 <br>
 注册和登录功能，测试方法如下(建议跟踪断点)：<br>
 1、启动client模块中的测试用客户端，根据提示输入你的用户名，以及friend用户名，服务便会自动执行注册，登录的流程。<br>
