@@ -17,6 +17,7 @@ message CLogin {
 code：
 200 -- ok
 404 -- error
+300 -- dumplicated registery
 */
 message SResponse {
 	required int32 code = 1;		    //返回码

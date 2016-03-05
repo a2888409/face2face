@@ -51,8 +51,8 @@ public class AuthServer {
                     throws Exception {
                 if (future.isSuccess()) {
                     //init registry
-                    initHandlers();
                     ParseRegistryMap.initRegistry();
+                    initHandlers();
                     logger.info("[AuthServer] Started Successed, waiting for other server connect...");
                 } else {
                     logger.error("[AuthServer] Started Failed");

@@ -25,10 +25,5 @@
             <artifactId>thirdparty</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>gate</groupId>
-            <artifactId>gate</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 </project>

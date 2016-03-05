@@ -1,5 +1,6 @@
 package auth.starter;
 
+import auth.AuthLogicConnection;
 import auth.AuthServer;
 import org.apache.commons.cli.*;
 import org.slf4j.Logger;
@@ -68,11 +69,22 @@ public class AuthStarter {
             _redisPoolManager.returnJedis(_redisPoolManager.getJedis());
             logger.info("Redis init successed");
 
+            xPathExpression  = xPath.compile("/auth/logic");
+            nodeList = (NodeList)xPathExpression.evaluate(rootElement, XPathConstants.NODESET);
+            element = (Element)nodeList.item(0);
+            String logicIp = element.getAttribute("ip");
+            int logicPort = Integer.parseInt(element.getAttribute("port"));
+
+
+            //start workers
+            workNum = Integer.parseInt(element.getAttribute("workNum"));
+            auth.Worker.startWorker(workNum);
 
             logger.info("Authserver authListenPort " + authListenPort);
 
             //Now Start Servers
             new Thread(() -> AuthServer.startAuthServer(authListenPort)).start();
+            new Thread(() -> AuthLogicConnection.startAuthLogicConnection(logicIp, logicPort)).start();
 
         } catch (Exception e) {
             logger.error("init cfg error");

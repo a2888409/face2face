@@ -8,5 +8,6 @@
     <file url="file://$PROJECT_DIR$/logic" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protobuf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/thirdparty" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

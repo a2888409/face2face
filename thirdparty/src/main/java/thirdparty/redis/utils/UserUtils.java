@@ -17,7 +17,7 @@ public class UserUtils {
 
     public static byte[] genDBKey(String userId) {
         StringBuilder sb = new StringBuilder();
-        sb.append("userId = {");
+        sb.append("userId={");
         sb.append(userId);
         sb.append("}");
 

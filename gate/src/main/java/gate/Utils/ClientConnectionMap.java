@@ -62,7 +62,13 @@ public class ClientConnectionMap {
 
     public static void registerUserid(String userid, long netId) {
         if(userid2netidMap.putIfAbsent(userid, netId) == null) {
-            ClientConnectionMap.getClientConnection(netId).setUserId(userid);
+            ClientConnection conn = ClientConnectionMap.getClientConnection(netId);
+            if(conn != null) {
+                conn.setUserId(userid);
+            } else {
+                logger.error("ClientConnection is null");
+                return;
+            }
         } else {
             logger.error("userid: {} has registered in userid2netidMap", userid);
         }

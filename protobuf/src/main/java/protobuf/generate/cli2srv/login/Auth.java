@@ -1854,6 +1854,7 @@ public final class Auth {
    *code：
    *200 -- ok
    *404 -- error
+   *300 -- dumplicated registery
    * </pre>
    */
   public static final class SResponse extends
@@ -2166,6 +2167,7 @@ public final class Auth {
      *code：
      *200 -- ok
      *404 -- error
+     *300 -- dumplicated registery
      * </pre>
      */
     public static final class Builder extends

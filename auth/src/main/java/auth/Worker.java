@@ -53,6 +53,7 @@ public class Worker extends Thread {
     public static void  startWorker(int workNum) {
         _workers = new Worker[workNum];
         for(int i = 0; i < workNum; i++) {
+            _workers[i] = new Worker();
             _workers[i].start();
         }
     }

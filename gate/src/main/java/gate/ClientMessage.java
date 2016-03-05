@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import protobuf.Utils;
 import protobuf.analysis.ParseMap;
 import protobuf.generate.cli2srv.chat.Chat;
+import protobuf.generate.cli2srv.login.Auth;
 import protobuf.generate.internal.Internal;
 
 import java.io.IOException;
@@ -59,16 +60,27 @@ public class ClientMessage {
 
     public static void transfer2Logic(Message msg, ClientConnection conn) {
         ByteBuf byteBuf = null;
+        if(conn.getUserId() == null ) {
+            logger.error("User not login.");
+            return;
+        }
+
         if(msg instanceof Chat.CPrivateChat) {
-            long dest_netid = ClientConnectionMap.userid2netid(conn.getUserId()); //目标的netid
-            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), dest_netid, Internal.Dest.Logic, conn.getUserId());
+            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Logic, conn.getUserId());
         }
 
         GateLogicConnectionHandler.getGatelogicConnection().writeAndFlush(byteBuf);
     }
 
     public static void transfer2Auth(Message msg, ClientConnection conn) {
-        ByteBuf byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Auth, conn.getUserId());
+        ByteBuf byteBuf = null;
+        if(msg instanceof Auth.CLogin) {
+            String userId = ((Auth.CLogin) msg).getUserid();
+            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Auth, userId);
+            ClientConnectionMap.registerUserid(userId, conn.getNetId());
+        } else if(msg instanceof Auth.CRegister) {
+            byteBuf = Utils.pack2Server(msg, ParseMap.getPtoNum(msg), conn.getNetId(), Internal.Dest.Auth, ((Auth.CRegister) msg).getUserid());
+        }
 
         GateAuthConnectionHandler.getGateAuthConnection().writeAndFlush(byteBuf);
 

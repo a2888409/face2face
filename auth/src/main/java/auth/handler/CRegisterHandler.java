@@ -38,8 +38,8 @@ public class CRegisterHandler extends IMHandler {
         //todo 写数据库要加锁
         Jedis jedis = AuthStarter._redisPoolManager.getJedis();
 
-        if (!jedis.exists(UserUtils.genDBKey(userid))) {
-            RouteUtil.sendResponse(404, "Account already exists", _netid, userid);
+        if (jedis.exists(UserUtils.genDBKey(userid))) {
+            RouteUtil.sendResponse(300, "Account already exists", _netid, userid);
             logger.info("Account already exists, userid: {}", userid);
             return;
         } else {

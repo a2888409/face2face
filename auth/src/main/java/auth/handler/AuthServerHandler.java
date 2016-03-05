@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import protobuf.analysis.ParseMap;
 import protobuf.generate.internal.Internal;
 
+import java.util.HashMap;
+
 public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
     private static final Logger logger = LoggerFactory.getLogger(AuthServerHandler.class);
     private static ChannelHandlerContext _gateAuthConnection;
@@ -22,6 +24,8 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
     public static ChannelHandlerContext getGateAuthConnection() {
         return _gateAuthConnection;
     }
+
+    private static HashMap<String, Long> userid2netidMap = new HashMap<>();
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -39,12 +43,14 @@ public class AuthServerHandler extends SimpleChannelInboundHandler<Message> {
         Worker.dispatch(gt.getUserId(), handler);
     }
 
-
-
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
             throws Exception {
         // super.exceptionCaught(ctx, cause);
         logger.error("An Exception Caught");
+    }
+
+    public static void putInUseridMap(String userid, Long netId) {
+        userid2netidMap.put(userid, netId);
     }
 }

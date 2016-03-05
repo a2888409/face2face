@@ -50,10 +50,17 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
             int code = sp.getCode();
             String desc = sp.getDesc();
             switch (code) {
-                case 400 :
+                case 200:
                     logger.info("Login succeed, description: {}", desc);
+                    break;
                 case 404:
                     logger.info("Login Failed, description: {}", desc);
+                    break;
+                case 300:
+                    logger.info("Dumplicated registry, description: {}", desc);
+                    break;
+                default:
+                    logger.info("unknow code: {}", code);
             }
         }
 
