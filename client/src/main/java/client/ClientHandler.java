@@ -98,7 +98,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
         }
 
         //这样设置的原因是，防止两方都阻塞在输入上
-        if(_verify && (_userId.equals("qzy"))) {
+        if(_verify && (_userId.equals("test"))) {
             loop();
         }
     }
