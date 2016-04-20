@@ -16,11 +16,11 @@ public class AIOClient {
         //init Registry
         ParseRegistryMap.initRegistry();
 
-        for(int i = 1; i < 2; i++) {
+        for(int i = 1; i < 5; i++) {
             AIOClientSingle client = new AIOClientSingle();
             logger.info("AIOClient {} has been created", i);
             //new Thread(() -> GateServer.startGateServer(gateListenPort)).start();
-            client.createSocket(Integer.parseInt(args[0]));
+            client.createSocket(i);
         }
 
         try {

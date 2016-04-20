@@ -21,13 +21,39 @@ public class PacketDecoder extends ByteToMessageDecoder {
     protected void decode(ChannelHandlerContext ctx, ByteBuf in,
                           List<Object> out) throws Exception {
 
-        int length = checkLength(ctx, in);
-        if (length == -1 || length == 0)
+        in.markReaderIndex();
+
+        if (in.readableBytes() < 4) {
+            logger.info("readableBytes length less than 4 bytes, ignored");
+            in.resetReaderIndex();
             return;
+        }
+
+        int length = in.readInt();
+
+        if (length < 0) {
+            ctx.close();
+            logger.error("message length less than 0, channel closed");
+            return;
+        }
+
+        if (length > in.readableBytes()) {
+            //注意！编解码器加这种in.readInt()日志，在大并发的情况下很可能会抛数组越界异常！
+            //logger.error("message received is incomplete,ptoNum:{}, length:{}, readable:{}", in.readInt(), length, in.readableBytes());
+            in.resetReaderIndex();
+            return;
+        }
 
         int ptoNum = in.readInt();
 
+        //此处大并发的时候可能会抛出异常再检查一次
+        if (length > in.readableBytes()) {
+            in.resetReaderIndex();
+            return;
+        }
+
         ByteBuf byteBuf = Unpooled.buffer(length);
+
         in.readBytes(byteBuf);
 
         try {
@@ -46,26 +72,4 @@ public class PacketDecoder extends ByteToMessageDecoder {
         }
     }
 
-    int checkLength(ChannelHandlerContext ctx, ByteBuf in){
-        in.markReaderIndex();
-
-        if (in.readableBytes() < 4) {
-            logger.info("readableBytes length less than 4 bytes, ignored");
-            return 0;
-        }
-
-        int length = in.readInt();
-
-        if (length < 0) {
-            ctx.close();
-            logger.error("message length less than 0, channel closed");
-        }
-
-        if (length > in.readableBytes()) {
-            in.resetReaderIndex();
-            logger.error("message received is incomplete");
-            return -1;
-        }
-        return length;
-    }
 }
