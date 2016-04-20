@@ -10,10 +10,11 @@ import protobuf.Utils;
 import protobuf.generate.cli2srv.chat.Chat;
 import protobuf.generate.cli2srv.login.Auth;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 /**
  * Created by Dell on 2016/2/15.
+ * 模拟客户端聊天：自己给自己发消息
  */
 public class ClientHandler extends SimpleChannelInboundHandler<Message> {
     public static ChannelHandlerContext _gateClientConnection;
@@ -22,18 +23,21 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
     String _userId = "";
     String _friend = "";
     boolean _verify = false;
+    private static int count = 0;
+
+    public static int increased = 0;
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) {
+    public void channelActive(ChannelHandlerContext ctx) throws IOException {
         _gateClientConnection = ctx;
         String passwd = "123";
-
-        Scanner sc = new Scanner(System.in);
-        logger.info("Please Enter YourSelf UserId:");
-        _userId = sc.nextLine();
-
-        logger.info("Please Enter Userid Who You Want To Chat: ");
-        _friend = sc.nextLine();
+        _userId = Integer.toString(increased++);
+//        Scanner sc = new Scanner(System.in);
+//        logger.info("Please Enter YourSelf UserId:");
+//        _userId = sc.nextLine();
+//
+//        logger.info("Please Enter Userid Who You Want To Chat: ");
+//        _friend = sc.nextLine();
 
         sendCRegister(ctx, _userId, passwd);
         sendCLogin(ctx, _userId, passwd);
@@ -46,6 +50,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
 
         ByteBuf byteBuf = Utils.pack2Client(cb.build());
         ctx.writeAndFlush(byteBuf);
+        logger.info("send CRegister");
     }
 
     void sendCLogin(ChannelHandlerContext ctx, String userid, String passwd) {
@@ -57,6 +62,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
 
         ByteBuf byteBuf = Utils.pack2Client(loginInfo.build());
         ctx.writeAndFlush(byteBuf);
+        logger.info("send CLogin");
     }
 
     @Override
@@ -94,25 +100,27 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
                     logger.info("Unknow code: {}", code);
             }
         } else if(msg instanceof Chat.SPrivateChat) {
-            logger.info("{} receiced chat message: {}", _userId, ((Chat.SPrivateChat) msg).getContent());
+            logger.info("{} receiced chat message: {}.Total:{}", _userId, ((Chat.SPrivateChat) msg).getContent(), ++count);
         }
 
         //这样设置的原因是，防止两方都阻塞在输入上
-        if(_verify && (_userId.equals("test"))) {
-            loop();
+        if(_verify) {
+            sendMessage();
+            Thread.sleep(100);
         }
     }
 
-    void loop() {
-        logger.info("WelCome To Face2face Chat Room, You Can Say Something Now: ");
-        Scanner sc = new Scanner(System.in);
-        String content = sc.nextLine();
-        logger.info("{} Send Message: {} to {}", _userId, content, _friend);
+    void sendMessage() {
+//        logger.info("WelCome To Face2face Chat Room, You Can Say Something Now: ");
+//        Scanner sc = new Scanner(System.in);
+//        String content = sc.nextLine();
+        String content = "Hello, I am Tom!";
+//        logger.info("{} Send Message: {} to {}", _userId, content, _friend);
 
         Chat.CPrivateChat.Builder cp = Chat.CPrivateChat.newBuilder();
         cp.setContent(content);
         cp.setSelf(_userId);
-        cp.setDest(_friend);
+        cp.setDest(_userId);
 
         ByteBuf byteBuf = Utils.pack2Client(cp.build());
         _gateClientConnection.writeAndFlush(byteBuf);

@@ -6,7 +6,8 @@
                 port = "7070"
                 workNum = "5"/>
 
-    <redis      ip = "127.0.0.1"
+    <!--这里配置redis数据库地址-->
+    <redis      ip = "192.168.17.128"
                 port = "6379" />
 
 </logic>

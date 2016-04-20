@@ -24,10 +24,21 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
 
+//        for(int i = 0; i < 1; i++) {
+//            new Thread(() -> {
+//                try {
+//                    startConnect();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }).start();
+//        }
+        startConnect();
+    }
 
-        // Configure the client.
+    public static void startConnect() throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
-        try {
+        try{
             Bootstrap b = new Bootstrap();
             b.group(group)
                     .channel(NioSocketChannel.class)
@@ -44,7 +55,8 @@ public class Client {
                     });
 
             // Start the client.
-            ChannelFuture f = b.connect(HOST, PORT).addListener(new ChannelFutureListener() {
+            ChannelFuture f = b.connect(HOST, PORT)
+                    .addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future)
                         throws Exception {
@@ -61,9 +73,9 @@ public class Client {
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();
         } finally {
-            // Shut down the event loop to terminate all threads.
             group.shutdownGracefully();
         }
+
     }
 }
 
