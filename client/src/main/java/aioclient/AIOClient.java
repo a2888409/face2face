@@ -16,7 +16,7 @@ public class AIOClient {
         //init Registry
         ParseRegistryMap.initRegistry();
 
-        for(int i = 1; i < 5; i++) {
+        for(int i = 1; i < 500; i++) {
             AIOClientSingle client = new AIOClientSingle();
             logger.info("AIOClient {} has been created", i);
             //new Thread(() -> GateServer.startGateServer(gateListenPort)).start();

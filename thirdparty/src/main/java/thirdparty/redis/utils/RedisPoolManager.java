@@ -25,13 +25,13 @@ public class RedisPoolManager {
         if (pool == null) {
 
             JedisPoolConfig config = new JedisPoolConfig();
-            config.setMaxTotal(500);
+            config.setMaxTotal(300);
             config.setMaxIdle(20);
-            config.setMaxWaitMillis(100 * 1000l);
+            config.setMaxWaitMillis(10 * 1000l);
             config.setTestOnBorrow(true);
             config.setTestOnReturn(true);
 
-            pool = new JedisPool(config, REDIS_SERVER, REDIS_PORT, 10000);
+            pool = new JedisPool(config, REDIS_SERVER, REDIS_PORT, 10);
         }
 
         return pool;
@@ -91,4 +91,15 @@ public class RedisPoolManager {
         }
 
     }
+
+    /**
+     * 释放jedis
+     *
+     * @param jedis
+     */
+    public void releaseJedis(Jedis jedis) {
+        pool.returnResource(jedis);
+
+    }
+
 }

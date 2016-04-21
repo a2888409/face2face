@@ -9,6 +9,7 @@ import thirdparty.threedes.ThreeDES;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
+import java.util.concurrent.Future;
 
 /**
  * AIO消息发送管理器
@@ -80,7 +81,9 @@ public class AIORouterManager {
 			buf.putInt(ptoNum);
 			buf.put(bareByte);
 			buf.flip();
-			socket.write(buf);
+			Future<Integer> future = socket.write(buf);
+			while (!future.isDone());
+
 
 			Log.info("[SEND][total length:" + length + "][bare length:"
 					+ msgSend.getSerializedSize() + "]:\r\n"

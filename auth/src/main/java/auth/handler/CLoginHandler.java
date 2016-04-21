@@ -2,7 +2,6 @@ package auth.handler;
 
 import auth.IMHandler;
 import auth.Worker;
-import auth.starter.AuthStarter;
 import auth.utils.Common;
 import auth.utils.RouteUtil;
 import com.google.protobuf.Message;
@@ -11,7 +10,6 @@ import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.generate.cli2srv.login.Auth;
-import redis.clients.jedis.Jedis;
 import thirdparty.redis.utils.UserUtils;
 import thirdparty.thrift.generate.db.user.Account;
 import thirdparty.thrift.utils.DBOperator;
@@ -29,15 +27,14 @@ public class CLoginHandler extends IMHandler {
     @Override
     protected void excute(Worker worker) throws TException {
         Auth.CLogin msg = (Auth.CLogin)_msg;
-        Jedis jedis = AuthStarter._redisPoolManager.getJedis();
         Account account;
 
-        if(!jedis.exists(UserUtils.genDBKey(_userid))) {
+        if(!_jedis.exists(UserUtils.genDBKey(_userid))) {
             RouteUtil.sendResponse(Common.ACCOUNT_INEXIST, "Account not exists", _netid, _userid);
             logger.info("Account not exists, userid: {}", _userid);
             return;
         } else {
-            byte[] userIdBytes = jedis.hget(UserUtils.genDBKey(_userid), UserUtils.userFileds.Account.field);
+            byte[] userIdBytes = _jedis.hget(UserUtils.genDBKey(_userid), UserUtils.userFileds.Account.field);
             account = DBOperator.Deserialize(new Account(), userIdBytes);
         }
 

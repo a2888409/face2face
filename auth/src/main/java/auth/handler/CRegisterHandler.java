@@ -2,7 +2,6 @@ package auth.handler;
 
 import auth.IMHandler;
 import auth.Worker;
-import auth.starter.AuthStarter;
 import auth.utils.Common;
 import auth.utils.RouteUtil;
 import com.google.protobuf.Message;
@@ -11,8 +10,6 @@ import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import protobuf.generate.cli2srv.login.Auth;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.Protocol;
 import thirdparty.redis.utils.UserUtils;
 import thirdparty.thrift.generate.db.user.Account;
 import thirdparty.thrift.utils.DBOperator;
@@ -38,17 +35,17 @@ public class CRegisterHandler extends IMHandler {
         account.setPasswd(passwd);
 
         //todo 写数据库要加锁
-        Jedis jedis = AuthStarter._redisPoolManager.getJedis();
 
-        if (jedis.exists(UserUtils.genDBKey(userid))) {
+        if (_jedis.exists(UserUtils.genDBKey(userid))) {
             RouteUtil.sendResponse(Common.ACCOUNT_DUMPLICATED, "Account already exists", _netid, userid);
             logger.info("Account already exists, userid: {}", userid);
             return;
         } else {
-            jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
+            _jedis.hset(UserUtils.genDBKey(userid), UserUtils.userFileds.Account.field, DBOperator.Serialize(account));
             RouteUtil.sendResponse(Common.REGISTER_OK, "User registerd successd",_netid, userid);
             logger.info("User registerd successd, userid: {}", userid);
         }
+
     }
 
 }

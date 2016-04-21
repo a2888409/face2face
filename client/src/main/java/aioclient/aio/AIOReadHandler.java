@@ -155,7 +155,7 @@ public class AIOReadHandler implements CompletionHandler {
 
 		if(_verify) {
 			sendMessage();
-			//Thread.sleep(10);
+			Thread.sleep(500);
 		}
 	}
 
