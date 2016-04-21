@@ -37,7 +37,7 @@ public class PacketDecoder extends ByteToMessageDecoder {
             return;
         }
 
-        if (length > in.readableBytes()) {
+        if (length > in.readableBytes() - 4) {
             //注意！编解码器加这种in.readInt()日志，在大并发的情况下很可能会抛数组越界异常！
             //logger.error("message received is incomplete,ptoNum:{}, length:{}, readable:{}", in.readInt(), length, in.readableBytes());
             in.resetReaderIndex();
@@ -46,11 +46,6 @@ public class PacketDecoder extends ByteToMessageDecoder {
 
         int ptoNum = in.readInt();
 
-        //此处大并发的时候可能会抛出异常再检查一次
-        if (length > in.readableBytes()) {
-            in.resetReaderIndex();
-            return;
-        }
 
         ByteBuf byteBuf = Unpooled.buffer(length);
 
