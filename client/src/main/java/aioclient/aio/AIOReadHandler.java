@@ -1,6 +1,7 @@
 package aioclient.aio;
 
 
+import aioclient.AIOClient;
 import client.Common;
 import com.google.protobuf.Message;
 import org.slf4j.Logger;
@@ -155,7 +156,7 @@ public class AIOReadHandler implements CompletionHandler {
 
 		if(_verify) {
 			sendMessage();
-			Thread.sleep(500);
+			Thread.sleep(AIOClient.frequency);
 		}
 	}
 
