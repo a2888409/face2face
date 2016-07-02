@@ -15,7 +15,7 @@ public class Worker extends Thread {
     private static final Logger logger = LoggerFactory.getLogger(Worker.class);
     public static Worker[] _workers;
 
-    public  boolean _stop =false;
+    public  volatile boolean _stop =false;
     private final BlockingQueue<IMHandler> _tasks = new LinkedBlockingDeque<>();
 
     public static void dispatch(String userId, IMHandler handler) {
