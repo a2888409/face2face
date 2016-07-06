@@ -1,6 +1,5 @@
 # face2face
 ##基于netty的异步非阻塞实时聊天(IM)服务器。<br>
-本项目也可作为事件驱动的游戏服务器。<br>
 项目整体架构如下：<br>
 ![image](https://github.com/a2888409/face2face/blob/master/arch.png)<br> 
 auth服务：负责登录认证。<br> 
