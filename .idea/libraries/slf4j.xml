@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="slf4j">
-    <CLASSES>
-      <root url="file://$MAVEN_REPOSITORY$/org/slf4j" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,5 +1,6 @@
 ﻿*.log
 *.class
 *.jar
+.idea/
 
 
