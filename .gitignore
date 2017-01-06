@@ -1,6 +1,12 @@
-﻿*.log
-*.class
-*.jar
+*dependency-reduced-pom.xml
+.classpath
+.project
+.settings/
+target/
+devenv
+*.log*
+*.iml
 .idea/
-
-
+*.versionsBackup
+*bin
+.DS_Store
