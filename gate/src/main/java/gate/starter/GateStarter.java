@@ -3,20 +3,19 @@ import gate.GateAuthConnection;
 import gate.GateLogicConnection;
 import gate.GateServer;
 import org.apache.commons.cli.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
-import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import java.io.File;
 
 /**
  * Created by Qzy on 2016/1/28.
@@ -123,7 +122,7 @@ public class GateStarter {
     static void printHelpMessage() {
         System.out.println( "Change the xml File and Log.XML Path to right Absolute Path base on your project Location in your computor");
         System.out.println("Usage example: ");
-        System.out.println( "java -cfg D:\\MyProject\\face2face\\auth\\src\\main\\resources\\auth.xml  -log D:\\MyProject\\face2face\\auth\\src\\main\\resources\\log.xml");
+        System.out.println( "java -cfg D:\\MyProject\\face2face\\gate\\src\\main\\resources\\auth.xml  -log D:\\MyProject\\face2face\\gate\\src\\main\\resources\\log.xml");
         System.exit(0);
     }
 
