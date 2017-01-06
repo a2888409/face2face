@@ -6,7 +6,7 @@
                 port = "8080"
                 workNum = "5"/>
 
-    <redis      ip = "192.168.17.128"
+    <redis      ip = "127.0.0.1"
                 port = "6379" />
 
     <logic      ip = "127.0.0.1"

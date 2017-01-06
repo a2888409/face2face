@@ -11,6 +11,7 @@ import protobuf.generate.cli2srv.chat.Chat;
 import protobuf.generate.cli2srv.login.Auth;
 
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Dell on 2016/2/15.
@@ -21,23 +22,16 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
 
     private static final Logger logger = LoggerFactory.getLogger(ClientHandler.class);
     String _userId = "";
-    String _friend = "";
     boolean _verify = false;
     private static int count = 0;
 
-    public static int increased = 0;
+    public static AtomicLong increased = new AtomicLong(1);
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws IOException {
         _gateClientConnection = ctx;
         String passwd = "123";
-        _userId = Integer.toString(increased++);
-//        Scanner sc = new Scanner(System.in);
-//        logger.info("Please Enter YourSelf UserId:");
-//        _userId = sc.nextLine();
-//
-//        logger.info("Please Enter Userid Who You Want To Chat: ");
-//        _friend = sc.nextLine();
+        _userId = Long.toString(increased.getAndIncrement());
 
         sendCRegister(ctx, _userId, passwd);
         sendCLogin(ctx, _userId, passwd);
@@ -50,7 +44,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
 
         ByteBuf byteBuf = Utils.pack2Client(cb.build());
         ctx.writeAndFlush(byteBuf);
-        logger.info("send CRegister");
+        logger.info("send CRegister userid:{}", _userId);
     }
 
     void sendCLogin(ChannelHandlerContext ctx, String userid, String passwd) {
@@ -62,7 +56,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
 
         ByteBuf byteBuf = Utils.pack2Client(loginInfo.build());
         ctx.writeAndFlush(byteBuf);
-        logger.info("send CLogin");
+        logger.info("send CLogin userid:{}", _userId);
     }
 
     @Override
@@ -106,7 +100,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
         //这样设置的原因是，防止两方都阻塞在输入上
         if(_verify) {
             sendMessage();
-            Thread.sleep(100);
+            Thread.sleep(Client.frequency);
         }
     }
 
