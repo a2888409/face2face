@@ -46,7 +46,7 @@
 
 ####logic服务的水平扩展思想：(实现中)<br>
  - **中心化的思想**：还需要搭建一个名称服务，用来同步logic节点的信息。当gate接收到消息时，简单的做法是根据userid做一个hash，分配到指定logic上。<br>
- - **去中心化的思想**：所有节点自动其他节点的信息，实现较为复杂，结点信息同步可参考redis cluster中gossip算法，高可用HA实现可参考paxos算法实现，或使用zookeeper实现。
+ - **去中心化的思想**：所有节点自动其他节点的信息，实现较为复杂，节点信息同步可参考redis cluster中gossip算法，高可用HA实现可参考paxos算法实现，或使用zookeeper实现。
 
 
 
