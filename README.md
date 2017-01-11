@@ -1,5 +1,4 @@
 # face2face
-##项目结构：<br>
 ![image](https://github.com/a2888409/face2face/blob/master/arch.png)<br> 
 `auth服务`：负责登录认证。<br> 
 `gate服务`：负责客户端接入，也是服务器和客户端通信的媒介。<br> 
