@@ -12,7 +12,7 @@
 
  1. 使用intellij `maven方式`导入该工程，执行`mvn clean compile`<br>
  2. 在对应模块的resources目录下配置auth、logic服`redis数据库地址`。<br>
- 3. 启动redis服务：thirdparty中附带了一个windows cmd命令行可以直接启动的redis进程。只需用cmd进入该目录，执行：`redis-server.exe redis.windos.conf`<br>
+ 3. 启动redis服务：thirdparty中附带了一个windows cmd命令行可以直接启动的redis进程。只需用cmd进入该目录，执行：`redis-server.exe redis.windows.conf`<br>
  4. 打开intellij的debug/Run configuration根据工程路径重新配置auth logic gate服务启动项**program argument**的`-cfg`选项：(比如工程clone在了E盘code目录，那么就把logic的启动项改为-cfg E:\code\face2face\logic\src\main\resources\logic.xml)，auth、gate同理。<br>
  5. 按顺序启动`logic`、`auth`、`gate服务`(因服务间断线重连暂时未加入)<br>
 <br>
